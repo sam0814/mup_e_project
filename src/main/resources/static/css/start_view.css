@@ -1,0 +1,167 @@
+@charset "UTF-8";
+.wrap {
+    display: flex;
+    justify-content: center;
+    width: 1200px;
+    height: 780px;
+}
+
+.wrap-box {
+    text-align: center;
+    margin-top: 55px;
+    width: 482px;
+    height: 634px;
+    background-color: #000;
+}
+
+.span-box {
+    margin-top: 10px;
+}
+
+.span-box-span {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.box-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 482px;
+    height: 31px;
+}
+
+.box {
+    width: 28px;
+    height: 31px;
+    background-color: #e0e0e0;
+}
+
+.issue-box {
+    width: 482px;
+    height: 100px;
+}
+
+.issue-span-box {
+    padding-top: 27px;
+    padding-right: 197px;
+    font-size: 15px;
+    color: #fff;
+}
+
+.age-of-use-container {
+    text-align: start;
+    width: 482px;
+    height: 75px;
+    color: #fff;
+}
+
+.age-of-use-box {
+    padding-left: 30px;
+}
+
+.introduce-container {
+    text-align: start;
+    width: 482px;
+    height: 20px;
+}
+
+.introduce-box {
+    font-size: 12px;
+    padding-left: 30px;
+    color: #fff;
+}
+
+.text-container {
+    margin-left: 30px;
+    width: 360px;
+    height: 80px;
+    background-color: #fff;
+}
+
+
+p {
+    margin: 0;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.text-box-1 {
+    padding-top: 10px;
+    display: flex;
+    justify-content: left;
+}
+
+.text-box-1 > p {
+    margin-right: 27px;
+}
+
+.text-box-2 > p {
+    margin-left: 7px;
+    margin-right: 27px;
+}
+
+.text-box-2 :nth-child(2) {
+    margin-left: 28px;
+}
+
+.text-box-2 :nth-child(3) {
+    margin: 0;
+    margin-left: 38px;
+}
+
+.text-box-2 {
+    display: flex;
+    justify-content: left;
+}
+
+.text-1 {
+    width: 80px;
+    height: 26.4px;
+}
+
+.seat-container {
+    width: 482px;
+    height: 60px;
+}
+.seat-box {
+    text-align: start;
+    color: #fff;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.personnel-container {
+    width: 482px;
+    height: 80px;
+}
+.personnel-box {
+    text-align: start;
+    color: #fff;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.btn-box {
+    margin-bottom: 34px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    width: 135px;
+    height: 42px;
+    background-color: #fff;
+}
+
+#loginBtn {
+    width: 135px;
+    height: 42px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}

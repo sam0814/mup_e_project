@@ -1,0 +1,133 @@
+@charset "UTF-8";
+.wrap-container {
+    height: 600px !important;
+}
+
+.id-container {
+    width: 482px;
+    height: 32px !important;
+}
+
+.id-box {
+    padding-top: 13px !important;
+    padding-left: 27px;
+    margin-bottom: 5px;
+    font-size: 13px !important;
+    color: #fff;
+}
+
+.input-id {
+    height: 25px !important;
+}
+
+.input-email {
+    width: 300px;
+    height: 25px;
+    margin-left: 27px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+}
+
+.email-container .userId-container {
+    height: 30px !important;
+}
+
+.email-box .userId-box{
+    padding-top: 8px !important;
+    padding-left: 27px;
+    margin-bottom: 5px;
+    font-size: 14px !important;
+    color: #fff;
+
+}
+
+.email-box > span {
+    color: #fff;
+    margin-left: 27px;
+    font-size: 14px;
+}
+
+.userId-box > span {
+    color: #fff;
+    margin-left: 27px;
+    font-size: 14px;
+}
+
+.pw-box > span {
+    color: #fff;
+    margin-left: 27px;
+    font-size: 14px;
+}
+
+.pw-check-box > span {
+    color: #fff;
+    margin-left: 27px;
+    font-size: 14px;
+}
+
+.input-email {
+    height: 25px !important;
+}
+
+.input-userId {
+    width: 300px;
+    height: 25px;
+    margin-left: 27px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+}
+
+.btn-check {
+    font-size: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 62px;
+    height: 27px;
+    background-color: #e0e0e0;
+    margin-left: 12px;
+}
+
+.email-span {
+    color: rgb(192, 57, 43);
+    font-size: 12px;
+    margin-left: 27px;
+}
+
+.userId-span {
+    color: rgb(46, 204, 113);
+    font-size: 12px;
+    margin-left: 27px;
+}
+
+
+
+.input-pw {
+    width: 300px;
+    height: 35px;
+    margin-left: 27px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+}
+
+.input-pw-check {
+    width: 300px;
+    height: 35px;
+    margin-left: 27px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+}
+
+.pw-check-span {
+    color: rgb(192, 57, 43);
+    font-size: 12px;
+    margin-left: 27px;
+}
+
+.btn-box {
+    margin-top: 15px !important;
+}
+
