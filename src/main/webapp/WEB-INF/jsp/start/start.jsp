@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>start_view</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
    
    <!-- 내가 만든 외부 스타일시트 -->
-	<link rel="stylesheet" type="text/css" href="/static/css/start_view.css">
-	
-</head>
-<body>
+	<link rel="stylesheet" type="text/css" href="/static/css/start.css">
+
     <div class="container">
         <header>
             <jsp:include page="../include/header.jsp" />
@@ -71,12 +66,10 @@
                     </div>
                 </div>
 
-				<form id="startForm" action="/user/start/start" method="post">
                 <div class="btn-box">
-                    <input type="submit" id="loginBtn" class="btn btn-block btn-primary" value="회원가입">
-                    <input type="submit" id="loginBtn" class="btn btn-block btn-primary" value="로그인">
+                    <input type="button" id="signUpBtn" class="btn btn-block btn-primary" value="회원가입">
+                    <input type="button" id="loginBtn" class="btn btn-block btn-primary" value="로그인">
                 </div>
-                </form>
 
                 <div class="box-container">
                     <div class="box"></div>
@@ -92,5 +85,17 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+
+<script>
+$(document).ready(function() {
+	// 회원가입 버튼 클릭 => 회원가입 페이지로 이동
+	$('#signUpBtn').on('click', function() {
+		location.href = "/user/sign_up_view";
+	});
+	
+	$('#loginBtn').on('click', function() {
+		location.href = "/user/sign_in_view";
+	});
+});
+</script>

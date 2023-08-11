@@ -165,3 +165,11 @@ button {
     font-size: 16px;
     border: none;
 }
+
+#signUpBtn {
+	width: 135px;
+    height: 42px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}

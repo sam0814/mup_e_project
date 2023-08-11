@@ -65,3 +65,29 @@
     font-size: 16px;
     border: none;
 }
+
+.box-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 482px;
+    height: 31px;
+}
+
+.box {
+    width: 28px;
+    height: 31px;
+    background-color: #e0e0e0;
+}
+
+.span-box-span {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.btn-box {
+    margin-bottom: 34px;
+    display: flex;
+    justify-content: space-evenly;
+}

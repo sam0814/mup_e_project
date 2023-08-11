@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .wrap-container {
-    height: 600px !important;
+    height: 488px !important;
 }
 
 .id-container {
@@ -29,11 +29,11 @@
     border: 1px solid #ccc;
 }
 
-.email-container .userId-container {
+.email-container .userId-container .name-container {
     height: 30px !important;
 }
 
-.email-box .userId-box{
+.email-box .userId-box .name-box{
     padding-top: 8px !important;
     padding-left: 27px;
     margin-bottom: 5px;
@@ -77,6 +77,21 @@
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0,0,0,.075);
     border: 1px solid #ccc;
+}
+
+.input-name {
+	width: 300px;
+    height: 25px;
+    margin-left: 27px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+}
+
+.name-box > span{
+	color: #fff;
+    margin-left: 27px;
+    font-size: 14px;
 }
 
 .btn-check {
@@ -131,3 +146,60 @@
     margin-top: 15px !important;
 }
 
+.box-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 482px;
+    height: 31px;
+}
+
+.box {
+    width: 28px;
+    height: 31px;
+    background-color: #e0e0e0;
+}
+
+.span-box-span {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.btn-box {
+    margin-bottom: 34px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#backBtn {
+	width: 135px;
+    height: 42px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}
+
+#signUpBtn {
+	width: 135px;
+    height: 42px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}
+
+#emailCheckDuplicated {
+	display: none;
+}
+
+#emailCheckOk {
+	display: none;
+}
+
+#idCheckDuplicated {
+	display: none;
+}
+
+#idCheckOk {
+	display: none;
+}
