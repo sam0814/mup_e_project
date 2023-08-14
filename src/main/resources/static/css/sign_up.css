@@ -189,17 +189,27 @@
 }
 
 #emailCheckDuplicated {
-	display: none;
+	margin-left: 27px;
 }
 
 #emailCheckOk {
-	display: none;
+	margin-left: 27px;
 }
 
+#emailCheckLength {
+	margin-left: 27px;
+}
+
+#idCheckLength {
+	margin-left: 27px;
+}
+
+
+
 #idCheckDuplicated {
-	display: none;
+	margin-left: 27px;
 }
 
 #idCheckOk {
-	display: none;
+	margin-left: 27px;
 }

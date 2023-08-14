@@ -14,8 +14,19 @@
 <body>
     <div class="wrap">
         <header>
-            <img src="/static/images/icons8-영화-50.png" alt="" width="50" height="50">
-            <h1>www.MupE.com</h1>
+        	<div class="header-wrap">
+	            <img src="/static/images/icons8-영화-50.png" alt="" width="50" height="50">
+	            <h1>www.MupE.com</h1>
+	        </div>
+            
+            <%-- 로그인 정보 --%>
+		<div class="user-info d-none">
+			<%-- 로그인이 된 경우에만 로그인 정보와 로그아웃 노출 --%>
+			<c:if test="${not empty userName}">
+				<span><b>${userName}</b>님 반가워요!</span>
+				<a href="/user/sign_out">로그아웃</a>
+			</c:if>
+		</div>
         </header>
     </div>
 </body>

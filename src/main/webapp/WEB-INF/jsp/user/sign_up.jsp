@@ -6,10 +6,10 @@
     <title>회원가입</title>
     
     
-    <!-- bootstrap -->
-	<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+   <!-- bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="/static/css/header.css">
     <!-- <link rel="stylesheet" href="/static/css/start_view.css"> -->
@@ -56,8 +56,9 @@
                 
                 <%-- 이메일 체크 결과 --%>
 				<%-- d-none 클래스: display none (보이지 않게) --%>
-				<div id="emailCheckDuplicated">이미 사용중인 Email입니다.</div>
-				<div id="emailCheckOk">사용 가능한 Email 입니다.</div>
+				<div id="emailCheckLength" class="small text-danger d-none">email 형식에 맞게 입력해주세요.</div>
+				<div id="emailCheckDuplicated" class="d-none text-danger">이미 사용중인 Email입니다.</div>
+				<div id="emailCheckOk" class="d-none text-success">사용 가능한 Email 입니다.</div>
                 
                 <div class="userId-container">
                     <div class="userId-box">
@@ -69,8 +70,9 @@
 				
 				<%-- 아이디 체크 결과 --%>
 				<%-- d-none 클래스: display none (보이지 않게) --%>
-				<div id="idCheckDuplicated">이미 사용중인 Email입니다.</div>
-				<div id="idCheckOk">사용 가능한 Email 입니다.</div>
+				<div id="idCheckLength" class="small text-danger d-none">ID를 3자 이상 입력해주세요.</div>
+				<div id="idCheckDuplicated" class="d-none text-danger">이미 사용중인 아이디 입니다.</div>
+				<div id="idCheckOk" class="d-none text-success">사용 가능한 아이디 입니다.</div>
 				
                 <div class="pw-container">
                     <div class="pw-box">
@@ -121,8 +123,15 @@ $(document).ready(function() {
 		//alert("ㅇㅇㅇ");
 		
 		// 경고 문구 초기화
-		$('#emailCheckDuplicated').addClass('display:none');
+		$('#emailCheckLength').addClass('d-none');
+		$('#emailCheckDuplicated').addClass('d-none');
 		$('#emailCheckOk').addClass('d-none');
+		
+		let email = $('input[name=input-email]').val().trim(); 
+		if (email.length < 8) {
+			$('#emailCheckLength').removeClass('d-none');
+			return;
+		}
 		
 		//AJAX 통신 - 중복확인
 		$.ajax({
@@ -149,17 +158,24 @@ $(document).ready(function() {
 	});
 	
 	// 아이디 중복확인 버튼 클릭
-	$('#idCheckBtn').on('click', function() {
+	$('#userIdCheckBtn').on('click', function() {
 		//alert("ㅇㅇㅇ");
 		
 		// 경고 문구 초기화
-		$('#idCheckDuplicated').addClass('display:none');
+		$('#idCheckLength').addClass('d-none');
+		$('#idCheckDuplicated').addClass('d-none');
 		$('#idCheckOk').addClass('d-none');
+		
+		let loginId = $('input[name=input-userId]').val();
+		if (loginId.length < 3) {
+			$('#idCheckLength').removeClass('d-none');
+			return;
+		}
 		
 		//AJAX 통신 - 중복확인
 		$.ajax({
 			// request
-			url: "/user/is_duplicated_email"
+			url: "/user/is_duplicated_id"
 			, data: {"loginId":loginId}
 			
 			//response
@@ -191,8 +207,31 @@ $(document).ready(function() {
 		let password = $('input[name=input-pw]').val();
 		let confirmPassword = $('input[name=input-pw-check]').val();
 		
+		//alert("ㅁㅁ");
+		
+		
+		if (!name) {
+			alert("이름을 입력하세요");
+			return false;
+		}
+		
+		if (!email) {
+			alert("이메일을 입력하세요");
+			return false;
+		}
+		
+		if ($('#emailCheckOk').hasClass('d-none')) {
+			alert("아이디 중복확인을 다시 해주세요");
+			return false;
+		}
+		
 		if (!loginId) {
 			alert("아이디를 입력하세요");
+			return false;
+		}
+		
+		if ($('#idCheckOk').hasClass('d-none')) {
+			alert("아이디 중복확인을 다시 해주세요");
 			return false;
 		}
 		
@@ -204,15 +243,9 @@ $(document).ready(function() {
 			alert("비밀번호가 일치하지 않습니다");
 			return false;
 		}
-		if (!email) {
-			alert("이메일을 입력하세요");
-			return false;
-		}
 		
-		if ($('#idCheckOk').hasClass('d-none')) {
-			alert("아이디 중복확인을 다시 해주세요");
-			return false;
-		}
+		
+		
 		
 		let url = $(this).attr('action');
 		console.log(url);
