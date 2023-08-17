@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+	<title>Mupick_board</title>
 
      <!-- bootstrap CDN link -->
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -16,9 +22,9 @@
 
         <div class="main-wrap">
             <div class="nav">
-                <div id="nav-1" class="nav-wrap"><a href="#">Mupick!</a></div>
-                <div id="nav-2" class="nav-wrap">MupStar</div>
-                <div id="nav-3" class="nav-wrap">MupPhoto</div>
+                <div id="nav-1" class="nav-wrap"><a href="/post/mupick_list_view">Mupick!</a></div>
+                <div id="nav-2" class="nav-wrap"><a href="/star/movie_list_view">MupStar</a></div>
+                <div id="nav-3" class="nav-wrap"><a href="#">MupPhoto</a></div>
             </div>
 
             <div class="wrap">
@@ -26,12 +32,15 @@
                     <div class="span-wrap">
                         <span>Mupick!</span>
                     </div>
+                    <c:forEach items="${mupick}" var="mupick">
                     <ul class="li-list">
-                        <li>제 인생 영화 추천드립니다!</li>
-                        <span>무비평론가A</span>
-                        <span>2023.08.01</span>
+                        <a href="/post/mupick_detail_view?postId=${mupick.id}">${mupick.subject}</a>
+                        <span>${mupick.userId}</span>
+                        <%-- ZonedDateTime -> Date -> String 변환 --%>
+						<fmt:parseDate value="${mupick.createdAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedCreatedAt" />
+						<fmt:formatDate value="${parsedCreatedAt}" pattern="yyyy년 M월 d일 HH:mm:ss" />
                     </ul>
-                    <ul class="li-list">
+                   <!--  <ul class="li-list">
                         <li>봉준호 폼 미쳤다</li>
                         <span>한국영화좋아</span>
                         <span>2023.07.31</span>
@@ -40,14 +49,25 @@
                         <li>마블 영화의 최대 단점</li>
                         <span>마블늦덕</span>
                         <span>2023.07.29</span>
-                    </ul>
+                    </ul> -->
+                 </c:forEach>
                 </div>
 
                 <div class="write-btn-wrap">
                     <div class="write-btn">
-                        <input type="button" name="write-btn" value="글쓰기">
+                        <input type="button" id="write-btn" name="write-btn" value="글쓰기">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+<script>
+$(document).ready(function() {
+	// 글쓰기 버튼 클릭 => 글쓰기 페이지로 이동
+	$('#write-btn').on('click', function() {
+		//alert("click");
+		location.href = "/post/mupick_create_view";
+	});
+});
+</script>

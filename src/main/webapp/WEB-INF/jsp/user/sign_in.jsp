@@ -100,7 +100,7 @@
 				.done(function(data) {  // response
 					if (data.code == 1) {
 						// 성공
-						location.href = "/mupick/board_view"; // 글목록으로 이동
+						location.href = "/post/mupick_list_view"; // 글목록으로 이동
 					} else {
 						// 로직 실패
 						alert(data.errorMessage);

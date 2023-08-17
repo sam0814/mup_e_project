@@ -26,16 +26,27 @@
     color: rgb(41, 128, 185);
 }
 
+#nav-2 > a {
+    text-decoration: none;
+    color: #000;
+}
+
+#nav-3 > a {
+    text-decoration: none;
+    color: #000;
+}
+
 .wrap {
     margin: 0 auto;
-    width: 906px;
+    /*width: 906px;*/
     height: 200px;
 }
 
 .wrap-list {
+	margin: 0 auto;
     margin-top: 97px;
     width: 1000px;
-    height: 200px;
+    height: 500px;
 }
 
 .span-wrap {
