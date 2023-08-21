@@ -5,9 +5,14 @@
     color: #000 !important;
 }
 
-#nav-2{
+#nav-2 > a{
     text-decoration: none;
-    color: rgb(41, 128, 185);
+    color: rgb(41, 128, 185) !important;
+}
+
+#nav-3 > a{
+    text-decoration: none;
+    color: #000 !important;
 }
 
 .mupstar-text {

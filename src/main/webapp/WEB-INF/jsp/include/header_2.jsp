@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
     <!-- 내가 만든 외부 스타일시트 -->
-	<link rel="stylesheet" type="text/css" href="/static/css/header.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/header_2.css">
 	<link rel="stylesheet" type="text/css" href="/static/images/icons8-영화-50.png">
 </head>
 <body>
@@ -35,7 +35,7 @@ $(document).ready(function() {
 	// 글쓰기 버튼 클릭 => 글쓰기 페이지로 이동
 	$('#logo').on('click', function() {
 		//alert("click");
-		location.href = "/post/mupick_list_view";
+		location.href = "/user/start/start_view";
 	});
 });
 </script>

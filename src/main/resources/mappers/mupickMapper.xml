@@ -9,6 +9,25 @@
  		FROM
  			`mupick_post`
  	</select>
+ 	
+ 	
+ 	<select id="selectPostListByUserId" parameterType="int" resultType="com.mupe.mupick.domain.Mupick">
+		SELECT
+			`id`
+			,`userId`
+			,`subject`
+			,`content`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`mupick_post`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY `id` DESC
+	</select>
+ 	
+ 	
  
  	<insert id="insertPost" parameterType="map">
  		INSERT INTO `mupick_post`

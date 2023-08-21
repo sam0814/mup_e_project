@@ -9,13 +9,13 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/header_2.css">
     <link rel="stylesheet" href="/static/css/start.css">
     <link rel="stylesheet" href="/static/css/sign_in.css">
 
     <div class="container">
         <header>
-            <jsp:include page="../include/header.jsp" />
+            <jsp:include page="../include/header_2.jsp" />
         </header>
         <div class="wrap-container">
             <div class="span-box">

@@ -24,7 +24,7 @@
             <div class="nav">
                 <div id="nav-1" class="nav-wrap"><a href="/post/mupick_list_view">Mupick!</a></div>
                 <div id="nav-2" class="nav-wrap"><a href="/star/movie_list_view">MupStar</a></div>
-                <div id="nav-3" class="nav-wrap"><a href="#">MupPhoto</a></div>
+                <div id="nav-3" class="nav-wrap"><a href="/timeline/mup_photo_list_view">MupPhoto</a></div>
             </div>
 
             <div class="wrap">
@@ -32,7 +32,7 @@
                     <div class="span-wrap">
                         <span>Mupick!</span>
                     </div>
-                    <c:forEach items="${mupick}" var="mupick">
+                    <c:forEach items="${postList}" var="mupick">
                     <ul class="li-list">
                         <a href="/post/mupick_detail_view?postId=${mupick.id}">${mupick.subject}</a>
                         <span>${mupick.userId}</span>
@@ -40,16 +40,6 @@
 						<fmt:parseDate value="${mupick.createdAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedCreatedAt" />
 						<fmt:formatDate value="${parsedCreatedAt}" pattern="yyyy년 M월 d일 HH:mm:ss" />
                     </ul>
-                   <!--  <ul class="li-list">
-                        <li>봉준호 폼 미쳤다</li>
-                        <span>한국영화좋아</span>
-                        <span>2023.07.31</span>
-                    </ul>
-                    <ul class="li-list">
-                        <li>마블 영화의 최대 단점</li>
-                        <span>마블늦덕</span>
-                        <span>2023.07.29</span>
-                    </ul> -->
                  </c:forEach>
                 </div>
 

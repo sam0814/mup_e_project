@@ -22,7 +22,7 @@
             <div class="nav">
                 <div id="nav-1" class="nav-wrap"><a href="/post/mupick_list_view">Mupick!</a></div>
                 <div id="nav-2" class="nav-wrap"><a href="/star/movie_list_view">MupStar</a></div>
-                <div id="nav-3" class="nav-wrap">MupPhoto</div>
+                <div id="nav-3" class="nav-wrap"><a href="/timeline/mup_photo_list_view">MupPhoto</a></div>
             </div>
 
             <div class="mupstar-text">
@@ -58,10 +58,10 @@
                 </div>
             </div>
             <div class="goto-mupstar">
-                <a href="#">MupStar 하러가기</a>
-                <a href="#">MupStar 하러가기</a>
-                <a href="#">MupStar 하러가기</a>
-                <a href="#">MupStar 하러가기</a>
+                <a href="/star/movie_star_view">MupStar 하러가기</a>
+                <a href="/star/movie_star_view">MupStar 하러가기</a>
+                <a href="/star/movie_star_view">MupStar 하러가기</a>
+                <a href="/star/movie_star_view">MupStar 하러가기</a>
             </div>
         </div>
     </div>

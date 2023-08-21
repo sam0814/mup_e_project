@@ -46,8 +46,8 @@
             </div>
 
             <div class="file-btn-box">
-                <input class="file-btn-input">
-                <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="file-btn" value="file">
+                <!-- <input class="file-btn-input"> -->
+                <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="file-btn">
             </div>
 
             <div class="btn-box">

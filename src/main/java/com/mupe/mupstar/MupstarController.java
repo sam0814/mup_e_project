@@ -12,4 +12,14 @@ public class MupstarController {
 	public String movieListView() {
 		return "mupstar/mupstar_board";
 	}
+	
+	@GetMapping("/movie_star_view")
+	public String movieStarView() {
+		return "mupstar/mupstar_board_detail";
+	}
+	
+	@GetMapping("/movie_star_result_view")
+	public String movieStarResultView() {
+		return "mupstar/mupstar_board_detail_result";
+	}
 }

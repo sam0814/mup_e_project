@@ -10,7 +10,7 @@
 
     <div class="container">
         <header>
-            <jsp:include page="../include/header.jsp" />
+            <jsp:include page="../include/header_2.jsp" />
         </header>
         <div class="wrap">
             <div class="wrap-box">

@@ -1,5 +1,7 @@
 package com.mupe.mupick.bo;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,11 @@ public class MupickBO {
 	
 	@Autowired
 	private FileManagerService fileManager;
+	
+	public List<Mupick> getPostListByUserId(int userId) {
+		
+		return mupickMapper.selectPostListByUserId(userId);
+	}
 
 	public int addPost(int userId, String userLoginId,
 			String subject, String content,

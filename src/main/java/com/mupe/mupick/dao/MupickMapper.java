@@ -13,6 +13,8 @@ public interface MupickMapper {
 
 	public List<Map<String, Object>> selectPostList();
 	
+	public List<Mupick> selectPostListByUserId(int userId);
+	
 	public int insertPost(
 			@Param("userId") int userId, 
 			@Param("subject") String subject, 
