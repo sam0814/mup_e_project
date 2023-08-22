@@ -11,7 +11,7 @@
 
      <!-- bootstrap CDN link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="/static/css/header.css">
@@ -61,46 +61,184 @@
             </div>
 
             <div class="mup-photo-container">
+            	<c:forEach items="${cardList}" var="card">
                 <div class="mup-photo-wrap">
                     <div class="mup-photo-nav">
-                        <p>마블 늦덕</p>
-                        <p>2023-08-02 13:19:25</p>
+                        <p>${card.user.loginId}</p>
+
                     </div>
 
                     <div class="mup-photo-input">
-                        <img src="/static/images/ticket1.jpg" alt="" width="488px" height="500px">
+                        <img src="${card.post.imagePath}" alt="" width="488px" height="500px">
                     </div>
 
                     <div class="like-box">
                         <div class="like-img-box">
-                            <a href="#">
-                                <img src="/static/images/icons8_tum_.png" alt="" width="30px" height="30px">
-                            </a>
+                        	<c:if test="${card.filledLike eq false}">
+	                            <a href="#" class="like-btn">
+	                                <img src="/static/images/icons8_tum_.png" alt="" width="30px" height="30px">
+	                            </a>
+                            </c:if>
+                            
+                            <c:if test="${card.filledLike}">
+								<a href="#" class="like-btn" data-post-id="${card.post.id}">
+									<img src="/static/images/icons8_tum_fill.png" width="30" height="30" alt="filled tum">
+								</a>
+							</c:if>
+                            
                         </div>
-                        <p class="like-text">추천해요 2개</p>
+                        <p class="like-text">추천해요 ${card.likeCount}개</p>
                     </div>
 
                     <div class="impression-box">
-                        <b>마블늦덕의 한줄소감 </b>
-                        <b>- 역시 믿고 보는 마동석</b>
+                        <b>${card.user.loginId}의 한줄소감</b>
+                        <b>-${card.post.content}</b>
                     </div>
 
                     <!-- 댓글 -->
                     <div class="comment-wrap">
+                    <c:forEach items="${card.commentList}" var="commentView">
                         <div class="comment-nav">
-                            <p>댓글</p>
+                            <p>${commentView.comment.content}</p>
                         </div>
                         <div class="comment-box">
                             <p><b>송새미</b> - 저도 한번 봐야겠네요~</p>
                         </div>
+                    </c:forEach>
 
                         <div class="comment-input">
                             <input type="text">
-                            <button type="button">게시</button>
+                            <button type="button" class="comment-btn" data-post-id="${card.post.id}">게시</button>
                         </div>
                     </div>
                 </div>
+                </c:forEach>
 
             </div>
         </div>
     </div>
+    
+<script>
+$(document).ready(function() {
+	// 파일이미지 클릭 -> 숨겨져있는 type="file"을 동작
+	$('#fileUploadBtn').on('click', function(e) {
+		e.preventDefault();
+		$('#file').click();
+	});
+	
+	let file = null;
+	let extt = null;
+	// 사용자가 이미지를 선택하는 순간 유효성 확인 및 업로드 된 파일명 노출
+	$('#file').on('change', function(e) {
+		let fileName = e.target.files[0].name;
+		file = fileName;
+		console.log(fileName);
+		
+		let ext = fileName.split(".").pop().toLowerCase();
+		extt = ext;
+		if (ext != "jpg" && ext != "png" && ext != "gif" && ext != "jpeg") {
+			alert("이미지 파일만 업로드 할 수 있습니다.");
+			$('#file').val("");
+			$('#fileName').text('');
+			return;
+		}
+	
+		$('#fileName').text(fileName);
+	});
+	
+	// 글쓰기
+	$('#writeBtn').on('click', function(e) {
+		let content = $('#writeTextArea').val();
+		console.log(content);
+		if (content.length < 1) {
+			alert("글 내용을 입력해주세요");
+			return;
+		}
+		
+		// 파일 확장자 체크
+		/* console.log(e.target);
+		let fileName = e.target.files[0].name;*/
+		//let ext = fileName.split(".").pop().toLowerCase();
+		if (extt != "jpg" && extt != "png" && extt != "gif" && extt != "jpeg") {
+			alert("이미지 파일만 업로드 할 수 있습니다.");
+			$('#file').val("");  // 파일 태그에 파일 제거(보이지 않지만 업로드 될 수 있으므로 주의)
+			$('#fileName').text(''); // 파일 이름 비우기
+			return;
+		}
+		
+		// 폼데이터 만들기
+		let formData = new FormData();
+		formData.append("content", content);
+		formData.append("file", $('#file')[0].files[0]);
+		
+		$.ajax({
+			type: "post"
+			, url: "/muphoto_post/create"
+			, data: formData
+			,enctype: "mulitpart/form-data"
+			, processData: false
+			, contentType: false
+			, success: function(data) {
+				if (data.code == 1) {
+					location.reload();
+				} else if (data.code == 500) {
+					location.href = "/user/sign_in_view";
+				} else {
+					alert(data.errorMessage);
+				}
+			}
+			, error: function(e) {
+				alert("글 저장에 실패했습니다.");
+			}
+		});
+	});
+	
+	// 댓글 작성
+	$('.comment-btn').on('click', function() {
+		let postId = $(this).data('post-id');
+		//console.log(postId);
+		
+		let comment = $(this).prev().val().trim();
+		//console.log(comment);
+		
+		$.ajax({
+			type:"post"
+			, url: "/comment/create"
+			, data:{"postId" : postId, "content": comment}
+		
+			, success:function(data) {
+				if (data.code == 1) {
+					location.reload(true);
+				}
+			}
+			,error: function(requset, status, error) {
+				alert("댓글 쓰기 실패했습니다.");
+			}
+		});
+	});
+	
+	// 좋아요/해제
+	$('.like-btn').on('click', function(e) {
+		e.preventDefault();
+		
+		let postId = $(this).data('post-id');
+		
+		$.ajax({
+			url:"/like/" + postId       //     /like/3
+			, success:function(data) {
+				if (data.code == 1) {
+					location.reload();
+				} else if (data.code == 300) {
+					// 비로그인 시 로그인 페이지로 이동
+					alert(data.errorMessage);	
+					location.href = "/user/sign_in_view";
+				}
+			}
+			, error:function(request, status, error) {
+				alert("좋아요를 하는데 실패했습니다.");
+			}
+		});
+	});
+	
+});
+</script>

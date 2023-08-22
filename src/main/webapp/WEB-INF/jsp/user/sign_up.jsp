@@ -113,8 +113,9 @@
 <script>
 $(document).ready(function() {
 	// 뒤로 버튼 클릭 => 처음 페이지로 이동
-	$('.back-Btn').on('click', function() {
+	$('.back-Btn').on('click', function(e) {
 		//alert("ㅁㅁㅁ");
+		e.preventDefault();
 		location.href = "/user/start/start_view";
 	});
 	

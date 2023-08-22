@@ -71,7 +71,8 @@
  <script>
  $(document).ready(function() {
 	 $(document).ready(function() {
-		 	$('.back-Btn').on('click', function() {
+		 	$('.back-Btn').on('click', function(e) {
+		 		e.preventDefault();
 		 		location.href = "/user/start/start_view";
 		 	});
 	 

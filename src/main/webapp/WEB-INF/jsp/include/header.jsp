@@ -19,7 +19,7 @@
 	        </div>
             
             <%-- 로그인 정보 --%>
-		<div class="user-info d-none">
+		<div class="user-info">
 			<%-- 로그인이 된 경우에만 로그인 정보와 로그아웃 노출 --%>
 			<c:if test="${not empty userName}">
 				<span><b>${userName}</b>님 반가워요!</span>

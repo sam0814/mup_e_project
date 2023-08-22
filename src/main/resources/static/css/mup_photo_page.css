@@ -63,15 +63,15 @@ img {
     right: 400px;
 }
 
-.mup-photo-container {
+/*.mup-photo-container {
     display: flex;
     justify-content: center;
     
-}
+}*/
 
 .mup-photo-wrap {
+	margin: 0 auto;
     width: 487px;
-    height: 900px;
 }
 
 .mup-photo-nav {
