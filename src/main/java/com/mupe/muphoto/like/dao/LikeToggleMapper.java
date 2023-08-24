@@ -22,4 +22,5 @@ public interface LikeToggleMapper {
 			@Param("userId") int userId);
 	
 	public void deleteLikeByPostId(int postId);
+	
 }

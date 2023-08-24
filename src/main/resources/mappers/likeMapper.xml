@@ -21,7 +21,7 @@
  		(
  			`postId`
  			,`userId`
- 			,createdAt`
+ 			,`createdAt`
  		)
  		VALUES
  		(
@@ -34,7 +34,7 @@
  	<delete id="deleteLikeByPostIdUserId" parameterType="map">
 		DELETE
 		FROM
-			`like`
+			`mup_photo_like`
 		WHERE
 			`postId` = #{postId}
 			AND `userId` = #{userId}
@@ -43,7 +43,7 @@
 	<delete id="deleteLikeByPostId" parameterType="int">
 		DELETE
 		FROM
-			`like`
+			`mup_photo_like`
 		WHERE
 			`postId` = #{postId}
 	</delete>

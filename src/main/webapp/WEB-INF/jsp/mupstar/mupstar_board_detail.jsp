@@ -42,19 +42,19 @@
 
             <div class="movie_star-wrap">
                 <div class="movie-star">
-                    <img src="/static/images/icons8-star.png" alt="">
+                    <img src="/static/images/icons8-star.png" alt="" class="star-1">
                 </div>
                 <div class="movie-star">
-                    <img src="/static/images/icons8-star.png" alt="">
+                    <img src="/static/images/icons8-star.png" alt="" class="star-2">
                 </div>
                 <div class="movie-star">
-                    <img src="/static/images/icons8-star.png" alt="">
+                    <img src="/static/images/icons8-star.png" alt="" class="star-3">
                 </div>
                 <div class="movie-star">
-                    <img src="/static/images/icons8-star.png" alt="">
+                    <img src="/static/images/icons8-star.png" alt="" class="star-4">
                 </div>
                 <div class="movie-star">
-                    <img src="/static/images/icons8-star.png" alt="">
+                    <img src="/static/images/icons8-star.png" alt="" class="star-5">
                 </div>
             </div>
 
@@ -69,3 +69,15 @@
         </div>
 
     </div>
+    
+ <script>
+		$(document).ready(function() {
+			
+			// 목록 버튼 클릭 => mupstar_board 페이지로 이동
+			$('.list-btn').on('click', function() {
+				//alert("목록");
+				location.href = "/star/movie_list_view";
+			});
+			
+		});
+	</script>

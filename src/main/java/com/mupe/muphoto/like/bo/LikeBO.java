@@ -12,7 +12,7 @@ public class LikeBO {
 	private LikeToggleMapper likeToggleMapper;
 
 	public void LikeToggle(int postId, int userId) {
-		if (likeToggleMapper.selectLikeCountByPostIdOrUserId(postId, null) > 0) {
+		if (likeToggleMapper.selectLikeCountByPostIdOrUserId(postId, userId) > 0) {
 			// 삭제
 			likeToggleMapper.deleteLikeByPostIdUserId(postId, userId);
 		} else {
@@ -38,4 +38,5 @@ public class LikeBO {
 	public void deleteLikeByPostId(int postId) {
 		likeToggleMapper.deleteLikeByPostId(postId);
 	}
+	
 }

@@ -52,8 +52,9 @@
             </div>
 
             <div class="file-btn-box">
-                <input class="file-btn-input">
-                <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="file-btn" value="file">
+                <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="file-btn">
+                <div id="fileName" class="ml-4"></div>
+                <button type="button" class="fileBtn">file</button>
             </div>
 
             <div class="btn-box">
@@ -72,6 +73,34 @@
 			//alert("click");
 			location.href = "/post/mupick_list_view";
 		});
+		
+		
+		
+		// 파일이미지 클릭 -> 숨겨져있는 type="file"을 동작
+		$('.fileBtn').on('click', function(e) {
+			e.preventDefault();
+			$('#file').click();
+		});
+		
+		// 사용자가 이미지를 선택하는 순간 유효성 확인 및 업로드 된 파일명 노출
+		$('#file').on('change', function(e) {
+			let fileName = e.target.files[0].name;
+			file = fileName;
+			console.log(fileName);
+			
+			let ext = fileName.split(".").pop().toLowerCase();
+			//extt = ext;
+			if (ext != "jpg" && ext != "png" && ext != "gif" && ext != "jpeg") {
+				alert("이미지 파일만 업로드 할 수 있습니다.");
+				$('#file').val("");
+				$('#fileName').text('');
+				return;
+			}
+		
+			$('#fileName').text(fileName);
+		});
+		
+		
 		
 		// 수정 버튼 클릭
 		$('.list-btn3').on('click', function() {

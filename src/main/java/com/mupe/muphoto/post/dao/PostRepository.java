@@ -10,5 +10,5 @@ public interface PostRepository extends JpaRepository<PostEntity, Integer>{
 
 	public List<PostEntity> findAllByOrderByIdDesc();
 	
-	
+	public PostEntity deletePostByUserId(int postId);
 }

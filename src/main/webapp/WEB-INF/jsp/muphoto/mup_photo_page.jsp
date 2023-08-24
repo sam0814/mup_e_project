@@ -51,13 +51,15 @@
  
             </div>
             <div class="file-upload">
-                <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="input-box">
-
-                <a href="#" id="fileUploadBtn"><img width="35" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"></a>
-
-                <div id="fileName" class="ml-4"></div>
-
-                <button id="writeBtn" class="btn btn-info">업로드</button>
+            	<div class="upload-wrap">
+	                <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="input-box">
+	
+	                <img width="35" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png" id="fileUploadPhoto">
+	
+	                <div id="fileName"></div>
+	
+	                <button id="writeBtn" class="btn btn-info">업로드</button>
+	            </div>
             </div>
 
             <div class="mup-photo-container">
@@ -65,18 +67,19 @@
                 <div class="mup-photo-wrap">
                     <div class="mup-photo-nav">
                         <p>${card.user.loginId}</p>
-
+                        <a><img alt="" src="/static/images/cancel.png" class="cancelBtn" data-post-id="${card.post.id}"></a>
                     </div>
 
                     <div class="mup-photo-input">
-                        <img src="${card.post.imagePath}" alt="" width="488px" height="500px">
+                        <img src="${card.post.imagePath}" id="photo" alt="" width="488px" height="500px">
                     </div>
 
+					<!-- 좋아요 -->
                     <div class="like-box">
                         <div class="like-img-box">
                         	<c:if test="${card.filledLike eq false}">
-	                            <a href="#" class="like-btn">
-	                                <img src="/static/images/icons8_tum_.png" alt="" width="30px" height="30px">
+	                            <a href="#" class="like-btn" data-post-id="${card.post.id}">
+	                                <img src="/static/images/icons8_tum_.png" id="like-tum" width="30px" height="30px">
 	                            </a>
                             </c:if>
                             
@@ -102,7 +105,7 @@
                             <p>${commentView.comment.content}</p>
                         </div>
                         <div class="comment-box">
-                            <p><b>송새미</b> - 저도 한번 봐야겠네요~</p>
+                            <p><b>${commentView.user.loginId}</b> - ${commentView.comment.content}</p>
                         </div>
                     </c:forEach>
 
@@ -110,6 +113,14 @@
                             <input type="text">
                             <button type="button" class="comment-btn" data-post-id="${card.post.id}">게시</button>
                         </div>
+                        
+                        <%-- 댓글 삭제 버튼-로그인 된 사람의 댓글일 때 삭제 버튼 노출 --%>
+						<c:if test="${userId == commentView.comment.userId}">
+						<a href="#" class="comment-del-btn" data-comment-id="${commentView.comment.id}">
+							<img src="https://www.iconninja.com/files/603/22/506/x-icon.png" width="10px" height="10px">
+						</a>
+						</c:if>
+                        
                     </div>
                 </div>
                 </c:forEach>
@@ -121,7 +132,7 @@
 <script>
 $(document).ready(function() {
 	// 파일이미지 클릭 -> 숨겨져있는 type="file"을 동작
-	$('#fileUploadBtn').on('click', function(e) {
+	$('#fileUploadPhoto').on('click', function(e) {
 		e.preventDefault();
 		$('#file').click();
 	});
@@ -196,10 +207,10 @@ $(document).ready(function() {
 	// 댓글 작성
 	$('.comment-btn').on('click', function() {
 		let postId = $(this).data('post-id');
-		//console.log(postId);
+		console.log(postId);
 		
 		let comment = $(this).prev().val().trim();
-		//console.log(comment);
+		console.log(comment);
 		
 		$.ajax({
 			type:"post"
@@ -220,8 +231,10 @@ $(document).ready(function() {
 	// 좋아요/해제
 	$('.like-btn').on('click', function(e) {
 		e.preventDefault();
+		//alert("aa");
 		
 		let postId = $(this).data('post-id');
+		//alert(postId);
 		
 		$.ajax({
 			url:"/like/" + postId       //     /like/3
@@ -236,6 +249,31 @@ $(document).ready(function() {
 			}
 			, error:function(request, status, error) {
 				alert("좋아요를 하는데 실패했습니다.");
+			}
+		});
+	});
+	
+	// 글 삭제
+	$('.cancelBtn').on('click', function(e) {
+		e.preventDefault(); // a 태그 위로 올라감 방지
+		
+		let postId = $(this).data('post-id');   // getting
+		//alert(postId);
+		
+		// ajax 글 삭제
+		$.ajax({
+			type:"delete"
+			, url:"/muphoto_post/delete"
+			, data: {"postId":postId}
+			, success: function(data) {
+				if (data.code == 1) {
+					location.reload(true);
+				} else {
+					alert(data.errorMessage);
+				}
+			}
+			, error: function(e) {
+				alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
 			}
 		});
 	});

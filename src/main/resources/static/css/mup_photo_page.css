@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-img {
-    margin-top: 0 !important;
-    opacity: 1 !important;
-}
 #nav-1 > a{
     text-decoration: none;
     color: #000 !important;
@@ -48,19 +44,25 @@ img {
 }
 
 .file-upload {
-    position: absolute;
-    right: 220px;
-    bottom: -2px;
-    display: flex;
-    justify-content: center;
+    width: 431px;
+    margin:auto;
 }
 
-.file-upload > input {
-    display: none;
-}
 
 #fileUploadBtn > img {
     right: 400px;
+}
+
+.upload-wrap {
+	display: flex;
+	justify-content: space-between;
+	width: 430px;
+	position: absolute;
+    bottom: 5;
+}
+
+.upload-wrap > input {
+    display: none;
 }
 
 /*.mup-photo-container {
@@ -84,6 +86,18 @@ img {
     height: 37px;
     background-color: #e0e0e0;
     line-height: 38px;
+}
+.mup-photo-nav > a {
+	margin-right: 30px;
+}
+
+/*.nav-wrap {
+	display: flex;
+	justify-content: space-between;
+}*/
+
+.cancelBtn {
+	margin-top: 7px;
 }
 
 .mup-photo-input {
@@ -165,4 +179,32 @@ img {
     border: 1px solid #ccc;
     color: #2080b9;
     background-color: #fff;
+}
+
+#fileUploadBtn {
+	margin-top: 0 !important; 
+    opacity: 1 !important;
+}
+
+#photo{
+	margin-top: 0 !important;
+	opacity: 1 !important;
+}
+
+#like-tum {
+	margin-top: 5px !important;
+}
+
+#fileUploadPhoto {
+	margin-top: 0px !important;
+	opacity: 1 !important;
+}
+
+/*#writeBtn{
+	margin-left: 136px;
+}*/
+
+#fileName {
+	margin-left: 44px;
+	line-height: 37px;
 }
