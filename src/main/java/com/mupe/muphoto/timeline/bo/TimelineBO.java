@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mupe.muphoto.comment.bo.CommentBO;
+import com.mupe.muphoto.comment.domain.CommentView;
 import com.mupe.muphoto.like.bo.LikeBO;
 import com.mupe.muphoto.post.bo.PostBO;
 import com.mupe.muphoto.post.entity.PostEntity;
@@ -22,8 +24,8 @@ public class TimelineBO {
 	@Autowired
 	private UserBO userBO;
 	
-//	@Autowired
-//	private CommentBO commentBO;
+	@Autowired
+	private CommentBO commentBO;
 	
 	@Autowired
 	private LikeBO likeBO;
@@ -46,7 +48,8 @@ public class TimelineBO {
 			card.setUser(user);
 			
 			// 댓글 세팅
-			//List<CommentView> commentViewList
+			List<CommentView> commentViewList  = commentBO.generateCommentViewList(post.getId());
+			card.setCommentList(commentViewList);
 			
 			// 좋아요 개수
 			int likeCount = likeBO.getLikeCountByPostId(post.getId());
@@ -54,7 +57,7 @@ public class TimelineBO {
 			
 			// 좋아요 여부
 			boolean filledLike = likeBO.filledLike(post.getId(), userId);
-			card.setFilledLike(false);
+			card.setFilledLike(filledLike);
 			
 			//cardViewList에 담는다
 			cardViewList.add(card);

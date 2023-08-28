@@ -66,6 +66,7 @@
 			AND `id` = #{postId}
 	</select>
 	
+	
 	<update id="updatePostByIdAndUserId" parameterType="map">
 		UPDATE `mupick_post`
 		SET

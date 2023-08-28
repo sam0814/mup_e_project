@@ -38,14 +38,14 @@
                 <span>내용</span>
             </div>
             <div class="insert-box">
-                <div class="left-box">
                     <%-- 이미지가 있을 때만 이미지 영역 추가 --%>
 				<c:if test="${not empty mupick.imagePath}">
+                <div class="left-box">
 					<div class="my-3">
 						<img src="${mupick.imagePath}" alt="업로드 된 이미지" width="250" height="319">
 					</div>
+				</div>
 				</c:if>
-			</div>
                 <div class="right-box">
                     <textarea name="input-text" id="content" cols="45" rows="22">${mupick.content}</textarea>
                 </div>

@@ -37,11 +37,12 @@
                 <span>내용</span>
             </div>
             <div class="insert-box">
-                <div class="left-box">
+                <!-- <div class="left-box">
                     <input class="left-input">
-                </div>
+                </div> -->
+                
                 <div class="right-box">
-                    <textarea name="input-text" id="content" cols="45" rows="22"></textarea>
+                    <textarea name="input-text" id="content" cols="80" rows="22"></textarea>
                 </div>
             </div>
 
@@ -91,6 +92,8 @@ $(document).ready(function() {
 	
 		$('#fileName').text(fileName);
 	});
+	
+	
 	
 	
 	// 모두 삭제

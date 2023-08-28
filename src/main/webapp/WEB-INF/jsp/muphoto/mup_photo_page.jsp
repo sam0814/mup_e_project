@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="mup-photo-input">
-                        <img src="${card.post.imagePath}" id="photo" alt="" width="488px" height="500px">
+                        <img src="${card.post.imagePath}" id="photo" alt="" width="485px" height="500px">
                     </div>
 
 					<!-- 좋아요 -->
@@ -85,10 +85,9 @@
                             
                             <c:if test="${card.filledLike}">
 								<a href="#" class="like-btn" data-post-id="${card.post.id}">
-									<img src="/static/images/icons8_tum_fill.png" width="30" height="30" alt="filled tum">
+									<img src="/static/images/icons8_tum_fill.png" id="like-tum" width="30" height="30" alt="filled tum">
 								</a>
 							</c:if>
-                            
                         </div>
                         <p class="like-text">추천해요 ${card.likeCount}개</p>
                     </div>
@@ -98,29 +97,22 @@
                         <b>-${card.post.content}</b>
                     </div>
 
-                    <!-- 댓글 -->
+                     <!-- 댓글 -->
                     <div class="comment-wrap">
-                    <c:forEach items="${card.commentList}" var="commentView">
                         <div class="comment-nav">
-                            <p>${commentView.comment.content}</p>
+                            <p>댓글</p>
                         </div>
+                    <c:forEach items="${card.commentList}" var="commentView">
                         <div class="comment-box">
                             <p><b>${commentView.user.loginId}</b> - ${commentView.comment.content}</p>
                         </div>
                     </c:forEach>
-
+						
+						<!-- 댓글 달기 -->
                         <div class="comment-input">
                             <input type="text">
                             <button type="button" class="comment-btn" data-post-id="${card.post.id}">게시</button>
                         </div>
-                        
-                        <%-- 댓글 삭제 버튼-로그인 된 사람의 댓글일 때 삭제 버튼 노출 --%>
-						<c:if test="${userId == commentView.comment.userId}">
-						<a href="#" class="comment-del-btn" data-comment-id="${commentView.comment.id}">
-							<img src="https://www.iconninja.com/files/603/22/506/x-icon.png" width="10px" height="10px">
-						</a>
-						</c:if>
-                        
                     </div>
                 </div>
                 </c:forEach>

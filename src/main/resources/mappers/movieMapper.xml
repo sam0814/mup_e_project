@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.mupe.admin.dao.MovieMapper">
+ 	<select id="selectPostList" resultType="map">
+ 		SELECT
+ 			*
+ 		FROM
+ 			`movie`
+ 	</select>
+ 	
+ 	<select id="selectPostListById" parameterType="int" resultType="com.mupe.admin.domain.Movie">
+ 		SELECT
+			`id`
+			,`subject`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`movie`
+		WHERE
+			`id` = #{id}
+		ORDER BY `id` DESC
+ 	</select>
+ 	
+ 	<insert id="insertPost" parameterType="map">
+ 		INSERT INTO `movie`
+ 		(
+			`subject`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{subject}
+			,#{imagePath}
+			, NOW()
+			, NOW()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="selectPostByPostIdAndUserId" parameterType="map" resultType="com.mupe.admin.domain.Movie">
+		SELECT
+			`id`
+			,`subject`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`movie`
+		WHERE
+				`id` = #{postId}
+	</select>
+ 	
+ 	<delete id="deletePostById" parameterType="map">
+ 		DELETE
+ 		FROM
+ 			`movie`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
+ </mapper>

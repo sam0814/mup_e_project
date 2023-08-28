@@ -24,7 +24,11 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	
-	
+	/**
+	 * 이메일 중복확인 API
+	 * @param email
+	 * @return
+	 */
 	@RequestMapping("/is_duplicated_email")
 	public Map<String, Object> isDuplicatedEmail(
 			@RequestParam("email") String email) {
@@ -44,6 +48,11 @@ public class UserRestController {
 
 	
 	
+	/**
+	 * 아이디 중복확인 API
+	 * @param loginId
+	 * @return
+	 */
 	@RequestMapping("/is_duplicated_id")
 	public Map<String, Object> isDuplicatedId(
 			@RequestParam("loginId") String loginId) {

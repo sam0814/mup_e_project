@@ -2,6 +2,7 @@ package com.mupe.muphoto.timeline.domain;
 
 import java.util.List;
 
+import com.mupe.muphoto.comment.domain.Comment;
 import com.mupe.muphoto.comment.domain.CommentView;
 import com.mupe.muphoto.post.entity.PostEntity;
 import com.mupe.user.entity.UserEntity;

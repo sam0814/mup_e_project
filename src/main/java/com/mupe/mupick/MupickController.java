@@ -29,12 +29,12 @@ public class MupickController {
 	@GetMapping("/mupick_list_view")
 	public String boardView(HttpSession session, Model model) {
 		
-		// 로그인 여부 조회
-				Integer userId = (Integer)session.getAttribute("userId");
-				if (userId == null) {
-					//비로그인이면 로그인 페이지로 이동
-					return "redirect:/user/sign_in_view";
-				}
+			// 로그인 여부 조회
+			Integer userId = (Integer)session.getAttribute("userId");
+			if (userId == null) {
+				//비로그인이면 로그인 페이지로 이동
+				return "redirect:/user/sign_in_view";
+			}
 		
 		// DB 글 목록 조회
 		List<Mupick> postList = mupickBO.getPostListByUserId(userId);

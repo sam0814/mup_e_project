@@ -35,13 +35,15 @@
             </div>
 
             <div class="wrap-container">
+            	<c:forEach items="${movieList}" var="movie">
                 <div class="movie-poster">
-                    <img src="/static/images/the_moon_movie.jpg" alt="" width="200px"
+                    <img src="${movie.imagePath}" alt="" width="200px"
                     height="300px">
-                    <span>더 문_2023</span>
+                    <span>${movie.subject}</span>
                 </div>
+                </c:forEach>
 
-                <div class="movie-poster">
+                <!-- <div class="movie-poster">
                     <img src="/static/images/be.jpg" alt="" width="200px"
                     height="300px">
                     <span>비공식 작전_2023</span>
@@ -55,7 +57,7 @@
                     <img src="/static/images/Smugglers.jpg" alt="" width="200px"
                     height="300px">
                     <span>밀수_2023</span>
-                </div>
+                </div> -->
             </div>
             <div class="goto-mupstar">
                 <a href="/star/movie_star_view">MupStar 하러가기</a>
