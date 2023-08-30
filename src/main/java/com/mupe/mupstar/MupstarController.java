@@ -47,11 +47,12 @@ public class MupstarController {
 	}
 	
 	@GetMapping("/movie_star_view")
-	public String movieStarView(Model model) {
+	public String movieStarView(Model model,
+			@RequestParam(value="id",required=false) Integer id) {
 		
 		// DB 글 목록 조회
 		//StarView starView = starBO.StarToggle(0, 0);
-		Movie movie = movieBO.getPostById(0);
+		Movie movie = movieBO.getPostById(id);
 		
 		//model.addAttribute("starView", starView);
 		model.addAttribute("movie", movie);

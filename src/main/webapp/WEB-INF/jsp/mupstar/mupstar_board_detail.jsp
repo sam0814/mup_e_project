@@ -55,13 +55,13 @@
 
 				<div class="movie_star-wrap">
 						<div class="movie-star">
-								<c:if test="${card.filledLike eq false}">
+								<c:if test="${card.filledStar eq false}">
 								<a href="#" class="like-btn" data-post-id="${star.post.id}">
 									<img src="/static/images/icons8-star.png" id="like-star">
 								</a>
 								</c:if>
 								
-								<c:if test="${card.filledLike}">
+								<c:if test="${card.filledStar}">
 								<a href="#" class="like-btn d-none" data-post-id="${star.post.id}">
 									<img src="/static/images/icons8_star_full.png" id="like-star"
 									alt="filled tum">

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mupe.admin.domain.Movie;
 
@@ -19,6 +20,12 @@ public interface MovieMapper {
 	public int insertPost(
 			@Param("subject") String subject,
 			@Param("imagePath") String imagePath,
+			@Param("screen") boolean screen);
+	
+	public void updatePost(
+			@Param("id") int id, 
+			@Param("subject") String subject, 
+			@Param("file") MultipartFile file, 
 			@Param("screen") boolean screen);
 	
 }

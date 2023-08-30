@@ -61,5 +61,15 @@
  		)
  	</insert>
 
+	<update id="updatePost" parameterType="map">
+		UPDATE `movie`
+		SET
+			`subject` = #{subject}
+			, `imagePath` = #{imagePath}
+			, `screen` = #{screen}
+			, `updatedAt` = NOW()
+		WHERE
+			`id` = #{id}
+	</update>
  	
  </mapper>

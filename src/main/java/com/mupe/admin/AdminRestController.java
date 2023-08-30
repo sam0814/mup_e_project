@@ -22,6 +22,13 @@ public class AdminRestController {
 	@Autowired
 	private MovieBO movieBO; 
 
+	/**
+	 * 글 작성 API
+	 * @param subject
+	 * @param file
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("/create")
 	public Map<String, Object> create(
 			@RequestParam("subject") String subject,
@@ -37,4 +44,22 @@ public class AdminRestController {
 		return result;
 	}
 	
+	@PutMapping("/update")
+	public Map<String, Object> update(
+			@RequestParam("postId") int postId,
+			@RequestParam("subject") String subject,
+			@RequestParam("file") MultipartFile file,
+			@RequestParam("screen") boolean screen) {
+	
+	
+	// BO 업데이트
+	movieBO.updatePost(postId, subject, file, screen);
+	
+	// 응답
+	Map<String, Object> result = new HashMap<>();
+	result.put("code", 1);
+	result.put("result", "성공");
+	return result;
+	
+	}
 }

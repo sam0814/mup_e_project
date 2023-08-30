@@ -41,6 +41,7 @@
 .movie-poster {
     width: 200px;
     height: 300px;
+     margin-right: 200px;
 }
 
 .movie-poster > img {
@@ -48,10 +49,13 @@
 }
 
 .movie-poster > span {
-    margin-left: 39px;
     width: 200px;
     height: 24px;
     font-size: 18px;
+}
+
+.movie-images {
+	margin-top: 75px;
 }
 
 .goto-mupstar {
@@ -61,4 +65,8 @@
     height: 20px;
     display: flex;
     justify-content: space-around;
+}
+
+.mupStarLink {
+	width: 200px;
 }
