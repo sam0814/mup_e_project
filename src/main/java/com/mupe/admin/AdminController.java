@@ -2,8 +2,6 @@ package com.mupe.admin;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +20,10 @@ public class AdminController {
 
 	
 	@GetMapping("/admin_view")
-	public String adminView(HttpSession session, Model model) {
+	public String adminView(Model model) {
 		
 		//DB 글(영화) 목록 조회
-		Movie movieList = movieBO.getPostByPostId(0);
+		List<Movie> movieList = movieBO.getPostList();
 		
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("view", "admin/admin");

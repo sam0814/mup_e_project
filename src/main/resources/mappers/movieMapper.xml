@@ -10,11 +10,12 @@
  			`movie`
  	</select>
  	
- 	<select id="selectPostListById" parameterType="int" resultType="com.mupe.admin.domain.Movie">
+ 	<select id="selectPostById" parameterType="int" resultType="com.mupe.admin.domain.Movie">
  		SELECT
 			`id`
 			,`subject`
 			,`imagePath`
+			,`screen`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -24,11 +25,29 @@
 		ORDER BY `id` DESC
  	</select>
  	
+<!-- 	<select id="selectPostByPostId" parameterType="int" resultType="com.mupe.admin.domain.Movie">
+ 		SELECT
+			`id`
+			,`subject`
+			,`imagePath`
+			,`screen`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`movie`
+		WHERE
+			`id` = #{postId}
+		ORDER BY `id` DESC
+ 	</select> -->
+ 	
+ 	 
+ 	
  	<insert id="insertPost" parameterType="map">
  		INSERT INTO `movie`
  		(
 			`subject`
 			,`imagePath`
+			,`screen`
 			,`createdAt`
 			,`updatedAt`
  		)
@@ -36,29 +55,11 @@
  		(
  			#{subject}
 			,#{imagePath}
+			,#{screen}
 			, NOW()
 			, NOW()
  		)
  	</insert>
+
  	
- 	<select id="selectPostByPostIdAndUserId" parameterType="map" resultType="com.mupe.admin.domain.Movie">
-		SELECT
-			`id`
-			,`subject`
-			,`imagePath`
-			,`createdAt`
-			,`updatedAt`
-		FROM
-			`movie`
-		WHERE
-				`id` = #{postId}
-	</select>
- 	
- 	<delete id="deletePostById" parameterType="map">
- 		DELETE
- 		FROM
- 			`movie`
- 		WHERE
- 			`id` = #{id}
- 	</delete>
  </mapper>

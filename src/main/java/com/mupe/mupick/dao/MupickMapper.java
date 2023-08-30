@@ -11,7 +11,7 @@ import com.mupe.mupick.domain.Mupick;
 @Repository
 public interface MupickMapper {
 
-	public List<Map<String, Object>> selectPostList();
+	public List<Mupick> selectPostList();
 	
 	public List<Mupick> selectPostListByUserId(int userId);
 	

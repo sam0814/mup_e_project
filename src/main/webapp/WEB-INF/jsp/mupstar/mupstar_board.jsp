@@ -60,10 +60,10 @@
                 </div> -->
             </div>
             <div class="goto-mupstar">
-                <a href="/star/movie_star_view">MupStar 하러가기</a>
-                <a href="/star/movie_star_view">MupStar 하러가기</a>
-                <a href="/star/movie_star_view">MupStar 하러가기</a>
-                <a href="/star/movie_star_view">MupStar 하러가기</a>
+                <a href="/star/movie_star_view?postId=${movie.id}">MupStar 하러가기</a>
+                <a href="/star/movie_star_view?postId=${movie.id}">MupStar 하러가기</a>
+                <a href="/star/movie_star_view?postId=${movie.id}">MupStar 하러가기</a>
+                <a href="/star/movie_star_view?postId=${movie.id}">MupStar 하러가기</a>
             </div>
         </div>
     </div>

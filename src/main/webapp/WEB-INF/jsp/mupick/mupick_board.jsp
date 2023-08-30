@@ -34,11 +34,11 @@
                     </div>
                     <c:forEach items="${postList}" var="mupick">
                     <ul class="li-list">
-                        <a href="/post/mupick_detail_view?postId=${mupick.id}">${mupick.subject}</a>
-                        <span>${mupick.userId}</span>
+                        <a href="/post/mupick_detail_view?postId=${mupick.id}" class="title-box">${mupick.subject}</a>
+                        <span class="userId-span">${mupick.userId}</span>
                         <%-- ZonedDateTime -> Date -> String 변환 --%>
-						<fmt:parseDate value="${mupick.createdAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedCreatedAt" />
-						<fmt:formatDate value="${parsedCreatedAt}" pattern="yyyy년 M월 d일 HH:mm:ss" />
+						<fmt:parseDate value="${mupick.createdAt}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedCreatedAt" />
+						<fmt:formatDate value="${parsedCreatedAt}" pattern="yyyy-MM-dd HH:mm:ss.S" />
                     </ul>
                  </c:forEach>
                 </div>

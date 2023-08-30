@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mupe.admin.dao.MovieMapper;
 import com.mupe.admin.domain.Movie;
 import com.mupe.common.FileManagerService;
-import com.mupe.mupick.domain.Mupick;
 
 @Service
 public class MovieBO {
@@ -24,40 +23,27 @@ public class MovieBO {
 	@Autowired
 	private FileManagerService fileManager;
 	
-	public List<Movie> getPostListById(int id) {
-		return movieMapper.selectPostListById(id);
+	public List<Movie> getPostList() {
+		return movieMapper.selectPostList();
 	}
 	
-	public int addPost(String subject, MultipartFile file) {
+	public Movie getPostById(int id) {
+		return movieMapper.selectPostById(id);
+	}
+	
+//	public Movie getPostByPostId(int postId) {
+//		return movieMapper.selectPostByPostId(postId);
+//	}
+	
+	public int addPost(String subject, MultipartFile file, boolean screen) {
 		String imagePath = null;
 		
 		if (file != null) {
 			imagePath = fileManager.saveFile(imagePath, file);
 		}
 		
-		return movieMapper.insertPost(subject, imagePath);
+		return movieMapper.insertPost(subject, imagePath, screen);
 	}
-	
-	public Movie getPostByPostId(int postId) {
-		return movieMapper.selectPostByPostId(postId);
-	}
-	
-	public void deletePostById(int id) {
-		// 기존 글 가져오기
-		Movie movie = movieMapper.selectPostByPostId(id);
-		
-		if (movie == null) {
-			logger.error("###[글 삭제] post id null", id);
-			return;
-		}
-		
-		// 기존 이미지가 있으면 삭제
-		if (movie.getImagePath() != null) {
-			// 이미지 제거
-			fileManager.deleteFile(movie.getImagePath());
-		}
-		
-		movieMapper.deletePostById(id);
-	}
+
 }
 

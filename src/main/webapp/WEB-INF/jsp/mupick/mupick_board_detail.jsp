@@ -25,8 +25,8 @@
             </div>
             <div class="mupick-text-detail">
                 <span>Mupick!이란?<br>
-                      -Mup 회원들이 추천하는 영화를 자유롭게 볼 수 있는 공간입니다.<br>
-                    보는것 뿐만 아니라 직접 영화를 추천 할 수도 있어요!</span>
+                      -Mup회원들이 추천 하는 영화를 자유롭게 볼 수 있는 공간입니다.<br>
+                    보는 것 뿐만 아니라 직접 영화를 추천 할수도 있어요!</span>
             </div>
 
             <div class="title-text">
@@ -59,8 +59,8 @@
 
             <div class="btn-box">
             <button type="button" class="list-btn1">목록</button>
-            <button type="button" class="list-btn2" data-post-id="${mupick.id}">삭제</button>
-            <button type="button" class="list-btn3" data-post-id="${mupick.id}">수정</button>
+            <button type="button" class="list-btn2" data-post-id="${post.id}">삭제</button>
+            <button type="button" class="list-btn3" data-post-id="${post.id}">수정</button>
             </div>
         </div>
 

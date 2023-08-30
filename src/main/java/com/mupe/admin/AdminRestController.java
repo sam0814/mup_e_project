@@ -6,8 +6,8 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +29,7 @@ public class AdminRestController {
 			HttpSession session) {
 		
 		// db insert
-		movieBO.addPost(subject, file);
+		movieBO.addPost(subject, file, false);
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 1);
@@ -37,19 +37,4 @@ public class AdminRestController {
 		return result;
 	}
 	
-	@DeleteMapping("/delete")
-	public Map<String, Object> delete(
-			@RequestParam("id") int id,
-			HttpSession session) {
-		
-		int movieId = (int)session.getAttribute("id");
-		
-		//BO 삭제
-		movieBO.deletePostById(movieId);
-		
-		Map<String, Object> result = new HashMap<>();
-		result.put("code", 1);
-		result.put("result", "성공");
-		return result;
-	}
 }

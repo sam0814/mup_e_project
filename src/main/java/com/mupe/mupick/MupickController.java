@@ -37,7 +37,7 @@ public class MupickController {
 			}
 		
 		// DB 글 목록 조회
-		List<Mupick> postList = mupickBO.getPostListByUserId(userId);
+		List<Mupick> postList = mupickBO.getPostList();
 		
 		model.addAttribute("postList", postList);
 		model.addAttribute("view", "mupick/mupick_board");

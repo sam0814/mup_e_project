@@ -4,9 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<script src="https://code.jquery.com/jquery-3.7.0.js"
+<!-- <script src="https://code.jquery.com/jquery-3.7.0.js"
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script> -->
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 
 <title>admin</title>
@@ -39,13 +43,14 @@
 						<h3>현재 업로드 영화</h3>
 
 						<div class="movie-list-wrap">
-						<c:forEach items="${movieList}" var="movie">
+							<c:forEach items="${movieList}" var="movie">
 							<div class="movie-wrap">
 								<span>${movie.subject}</span>
-								<button type="button" id="deleteBtn">삭제</button>
+								<button type="button" id="deleteBtn" data-id-movie="${movie.id}">숨기기</button>
 							</div>
-						</c:forEach>
-
+							</c:forEach>
+							
+							
 							<!-- <div class="movie-wrap">
 								<span>비공식 작전_2023</span>
 								<button type="button" id="deleteBtn">삭제</button>
@@ -61,7 +66,6 @@
 								<button type="button" id="deleteBtn">삭제</button>
 							</div> -->
 						</div>
-
 					</div>
 
 					<div class="mg-box"></div>
@@ -192,27 +196,8 @@
 			
 			// 삭제
 			$('#deleteBtn').on('click', function() {
-				//alert("삭제");
-				let postId = $(this).data('id');
-				//alert(postId);
 				
-				$.ajax({
-					type:"delete"
-					, url:"/post/delete"
-					, data: {"postId": postId}
-					, success:function(data) {
-						if (data.code == 1) {
-							alert("삭제 되었습니다.");
-							location.href = "/admin/admin_view";
-						} else {
-							alert(data.errorMessage);
-						}
-					}
-					, error:function(request, status, error) {
-						alert("메모를 삭제하는데 실패했습니다.");
-					}
-				
-				});
+			
 			});
 		});
 	</script>

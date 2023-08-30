@@ -23,6 +23,11 @@ public class MupickBO {
 	@Autowired
 	private FileManagerService fileManager;
 	
+	public List<Mupick> getPostList() {
+		return mupickMapper.selectPostList();
+	}
+	
+	
 	public List<Mupick> getPostListByUserId(int userId) {
 		
 		return mupickMapper.selectPostListByUserId(userId);
