@@ -36,15 +36,16 @@
 
             <div class="wrap-container">
             	<c:forEach items="${movieList}" var="movie">
-            	
+            	<c:if test="${movie.screen eq false}">
                 <div class="movie-poster">
                     <img src="${movie.imagePath}" class="movie-images" alt=""  width="200px"
                     height="300px">
                     <span>${movie.subject}</span>
-                    <div>
+                    <div class="mupstarLink">
                 		<a href="/star/movie_star_view?id=${movie.id}" class="mupStarLink">MupStar 하러가기</a>
                 	</div>
                 </div>
+                </c:if>
                 
                 </c:forEach>
                 <div class="goto-mupstar">

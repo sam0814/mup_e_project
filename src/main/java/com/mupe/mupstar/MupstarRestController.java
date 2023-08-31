@@ -33,7 +33,7 @@ public class MupstarRestController {
 		}
 		
 		//BO
-		starBO.StarToggle(postId, postId);
+		starBO.StarToggle(postId, userId);
 		
 		// 응답
 		result.put("code", 1);

@@ -115,163 +115,102 @@
 	</div>
 
 	<script>
-		$(document)
-				.ready(
-						function() {
+		$(document).ready(function() {
 
-							// 취소 버튼 클릭 => mupick_board 페이지로 이동
-							$('#cancelBtn').on('click', function() {
-								//alert("목록");
-								location.href = "/star/movie_list_view";
-							});
+			// 취소 버튼 클릭 => mupick_board 페이지로 이동
+			$('#cancelBtn').on('click', function() {
+				//alert("목록");
+				location.href = "/star/movie_list_view";
+			});
 
-							$('#fileUploadBtn').on('click', function(e) {
-								e.preventDefault();
-								$('#file').click();
-							});
+			$('#fileUploadBtn').on('click', function(e) {
+				e.preventDefault();
+				$('#file').click();
+			});
 
-							// 사용자가 이미지를 선택하는 순간 유효성 확인 및 업로드 된 파일명 노출
-							$('#file').on(
-									'change',
-									function(e) {
-										let fileName = e.target.files[0].name;
-										file = fileName;
-										console.log(fileName);
+			// 사용자가 이미지를 선택하는 순간 유효성 확인 및 업로드 된 파일명 노출
+			$('#file').on('change',function(e) {
+				let fileName = e.target.files[0].name;
+				file = fileName;
+				console.log(fileName);
 
-										let ext = fileName.split(".").pop()
-												.toLowerCase();
-										//extt = ext;
-										if (ext != "jpg" && ext != "png"
-												&& ext != "gif"
-												&& ext != "jpeg") {
-											alert("이미지 파일만 업로드 할 수 있습니다.");
-											$('#file').val("");
-											$('#fileName').text('');
-											return;
-										}
+				let ext = fileName.split(".").pop().toLowerCase();
+				//extt = ext;
+				if (ext != "jpg" && ext != "png"&& ext != "gif" && ext != "jpeg") {
+					alert("이미지 파일만 업로드 할 수 있습니다.");
+					$('#file').val("");
+					$('#fileName').text('');
+					return;
+				}
 
-										$('#fileName').text(fileName);
-									});
+				$('#fileName').text(fileName);
+			});
 
-							// 글 저장 
-							$('#uploadBtn')
-									.on(
-											'click',
-											function() {
-												let subject = $('#subject')
-														.val()/* .trim() */;
-												let file = $('#file').val();
+					// 글 저장 
+					$('#uploadBtn').on('click',function() {
+						let subject = $('#subject').val()/* .trim() */;
+						let file = $('#file').val();
 
-												// validation check
-												if (!subject) {
-													alert("제목을 입력해주세요");
-													return;
-												}
+					// validation check
+						if (!subject) {
+							alert("제목을 입력해주세요");
+							return;
+						}
 
-												if (!file) {
-													alert("파일을 넣어주셔야합니다!");
-													return;
-												}
+						if (!file) {alert("파일을 넣어주셔야합니다!");
+							return;
+						}
 
-												// 파일이 업로드 된 경우에만 확장자 체크
-												if (file != "") {
-													// 확장자만 뽑은 후 소문자로 변경
-													let ext = file.split(".")
-															.pop()
-															.toLowerCase();
-													//alert(ext);
+						// 파일이 업로드 된 경우에만 확장자 체크
+							if (file != "") {
+							// 확장자만 뽑은 후 소문자로 변경
+							let ext = file.split(".").pop().toLowerCase();
+							//alert(ext);
 
-													if ($.inArray(ext, [ 'jpg',
-															'jpeg', 'png',
-															'gif' ]) == -1) {
-														alert("이미지 파일만 업로드 할 수 있습니다.");
-														$('#file').val(''); // 파일을 비운다.
-														return;
-													}
-												}
+							if ($.inArray(ext, [ 'jpg','jpeg', 'png','gif' ]) == -1) {
+								alert("이미지 파일만 업로드 할 수 있습니다.");
+								$('#file').val(''); // 파일을 비운다.
+									return;
+							}
+						}
 
-												// AJAX 통신
-												// 이미지를 업로드 할 때는 반드시 form 태그가 있어야함
-												let formData = new FormData();
-												formData.append("subject",
-														subject);
-												formData.append("file",
-														$('#file')[0].files[0]);
+						// AJAX 통신
+						// 이미지를 업로드 할 때는 반드시 form 태그가 있어야함
+							let formData = new FormData();
+								formData.append("subject",subject);
+								formData.append("file",
+								$('#file')[0].files[0]);
 
-												$
-														.ajax({
-															// request
-															type : "post",
-															url : "/admin/create",
-															data : formData,
-															enctype : "multipart/form-data" //파일 업로드를 위한 필수 설정
-															,
-															processData : false //파일 업로드를 위한 필수 설정
-															,
-															contentType : false //파일 업로드를 위한 필수 설정
+						$.ajax({
+								// request
+								type : "post"
+								,url : "/admin/create"
+								,data : formData
+								,enctype : "multipart/form-data" //파일 업로드를 위한 필수 설정
+								,processData : false //파일 업로드를 위한 필수 설정
+								,contentType : false //파일 업로드를 위한 필수 설정
 
-															// response
-															,
-															success : function(
-																	data) {
-																if (data.code == 1) {
-																	// 성공
-																	alert("글이 저장되었습니다.");
-																	location.href = "/star/movie_list_view"
-																} else {
-																	alert(data.errorMessage);
-																}
-															},
-															error : function(
-																	request,
-																	stataus,
-																	error) {
-																alert("글을 저장하는데 실패했습니다.");
-															}
-														});
-											});
-							
-							// 글 수정
-							$('#deleteBtn').on('click',function() {
-								//alert("아");
-								
-								// 폼태그를 스크립트에서 만든다.
-								let postId = $(this).data('post-id');
-								//alert(postId);
-								let formData = new FormData();
-								formData.append("postId", postId);
-								formData.append("subject", subject);
-								formData.append("file", $('#file')[0].files[0]);
-								formData.append("screen", screen);
-								
-								//ajax
-								$.ajax({
-									//request
-									type:"put"
-									, url:"/admin/update"
-									, data:formData
-									, enctype:"multipart/form-data"		// 파일 업로드를 위한 필수 설정
-									, processData:false					// 파일 업로드를 위한 필수 설정
-									, contentType:false					// 파일 업로드를 위한 필수 설정
-									
-									// response
-									, success:function(data) {
-										if (data.code == 1) {
-											alert("영화가 수정되었습니다");
-											location.reload(true);
-										} else {
+								// response
+								,success : function(data) {
+									if (data.code == 1) {
+										// 성공
+										alert("글이 저장되었습니다.");
+										location.href = "/star/movie_list_view"
+									} else {
 											alert(data.errorMessage);
-										}
 									}
-								, error:function(request, status, error) {
-									alert("영화 수정 실패했습니다.");
+								}
+									,error : function(request,stataus,error) {
+										alert("글을 저장하는데 실패했습니다.");
 									}
-								
 								});
 							});
 							
+							// 글 수정
+							$('#deleteBtn').on('click',function() {
+								alert("숨기기");
 							
 							});
+		});
 							
-					});
 	</script>

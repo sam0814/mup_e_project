@@ -42,6 +42,10 @@
     height: 200px;
 }
 
+.main-wrap {
+	border-top: 3px solid #dbdbdb;
+}
+
 .wrap-list {
 	margin: 0 auto;
     margin-top: 97px;

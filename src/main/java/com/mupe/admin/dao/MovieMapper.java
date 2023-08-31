@@ -22,10 +22,10 @@ public interface MovieMapper {
 			@Param("imagePath") String imagePath,
 			@Param("screen") boolean screen);
 	
-	public void updatePost(
-			@Param("id") int id, 
-			@Param("subject") String subject, 
-			@Param("file") MultipartFile file, 
-			@Param("screen") boolean screen);
+//	public void updatePost(
+//			@Param("id") int id, 
+//			@Param("subject") String subject, 
+//			@Param("file") MultipartFile file, 
+//			@Param("screen") boolean screen);
 	
 }
