@@ -44,18 +44,18 @@ public class MovieBO {
 
 		return movieMapper.insertPost(subject, imagePath, screen);
 	}
+	
+	//영화 삭제
+	public void deletePost(int id) {
 
-//	public void updatePost(int id, String subject, MultipartFile file, boolean screen) {
+		// 영화 업데이트
+		movieMapper.deletePost(id);
+	}
+	
+		//영화 나타내기
+//		public void insertPost(int id) {
 //
-//		//update 대상인 기존글 가져오기
-//		Movie movie = movieMapper.selectPostById(id);
-//		logger.warn("###[영화 수정] post is null. Id:{}", id);
-//		if (movie == null) {
-//			logger.warn("###[영화 수정] post ud null. Id:{}", id);
-//			return;
+//			// 영화 업데이트
+//			movieMapper.insertPost(id);
 //		}
-//		
-//		// 영화 업데이트
-//		movieMapper.updatePost(id, subject, file, screen);
-//	}
 }

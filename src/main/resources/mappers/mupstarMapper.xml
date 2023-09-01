@@ -3,24 +3,31 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.mupe.mupstar.dao.MupStarMapper">
- 	<select id="selectStarList" resultType="map">
+ 	<select id="selectStar" resultType="map">
  		SELECT
  			*
  		FROM
  			`star`
  	</select>
  	
- 	<select id="selectPostListByUserId" parameterType="int" resultType="com.mupe.mupstar.domain.MupStar">
-		SELECT
-			`movieId`
-			,`userId`
+ 
+ 	 <insert id="insertStar" parameterType="map"> 
+ 		INSERT INTO `star`
+ 		(
+ 			`movieId`
+ 			,`userId`
 			,`startCount`
 			,`createdAt`
 			,`updatedAt`
-		FROM
-			`star`
-		WHERE
-			`userId` = #{userId}
-		ORDER BY `movieId` DESC
-	</select>
+ 		)
+ 		VALUES
+ 		(
+ 			#{movieId}
+ 			,#{userId}
+ 			,#{startCount}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 		
+ 	</insert>
  </mapper>

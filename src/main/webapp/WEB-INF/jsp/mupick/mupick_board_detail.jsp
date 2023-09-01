@@ -47,20 +47,24 @@
 				</div>
 				</c:if>
                 <div class="right-box">
-                    <textarea name="input-text" id="content" cols="45" rows="22">${mupick.content}</textarea>
+                    <textarea name="input-text" id="content" cols="80" rows="22">${mupick.content}</textarea>
                 </div>
             </div>
 
             <div class="file-btn-box">
                 <input type="file" id="file" accept=".jpg, .jpeg, .png, .gif" class="file-btn">
                 <div id="fileName" class="ml-4"></div>
+                <c:if test="${userId eq mupick.userId}">
                 <button type="button" class="fileBtn">file</button>
+                </c:if>
             </div>
 
             <div class="btn-box">
             <button type="button" class="list-btn1">목록</button>
-            <button type="button" class="list-btn2" data-post-id="${post.id}">삭제</button>
-            <button type="button" class="list-btn3" data-post-id="${post.id}">수정</button>
+            <c:if test="${userId eq mupick.userId}">
+            <button type="button" class="list-btn2" data-post-id="${mupick.id}">삭제</button>
+            <button type="button" class="list-btn3" data-post-id="${mupick.id}">수정</button>
+            </c:if>
             </div>
         </div>
 

@@ -54,75 +54,20 @@
 					</div>
 
 				<div class="movie_star-wrap">
-						<div class="movie-star">
-								<c:if test="${star.filledStar eq false}">
-								<a href="#" class="like-btn" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8-star.png" id="like-star">
-								</a>
-								</c:if>
-								
-								<c:if test="${star.filledStar}">
-								<a href="#" class="like-btn d-none" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8_star_full.png" id="like-star"
-									alt="filled tum">
-								</a>
-								</c:if>
-						</div>
-
-						<div class="movie-star">
-								<a href="#" class="like-btn" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8-star.png" id="like-star">
-								</a>
-								<a href="#" class="like-btn d-none" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8_star_full.png" id="like-star"
-									alt="filled tum">
-								</a>
-						</div>
-
-
-						<div class="movie-star">
-								<a href="#" class="like-btn" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8-star.png" id="like-star">
-								</a>
-								<a href="#" class="like-btn d-none" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8_star_full.png" id="like-star"
-									alt="filled tum">
-								</a>
-						</div>
-
-						<div class="movie-star">
-								<a href="#" class="like-btn" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8-star.png" id="like-star">
-								</a>
-								<a href="#" class="like-btn d-none" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8_star_full.png" id="like-star"
-									alt="filled tum">
-								</a>
-						</div>
-
-						<div class="movie-star">
-								<a href="#" class="like-btn" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8-star.png" id="like-star">
-								</a>
-								<a href="#" class="like-btn d-none" data-post-id="${star.post.id}">
-									<img src="/static/images/icons8_star_full.png" id="like-star"
-									alt="filled tum">
-								</a>
-						</div>
+						<input type="text" class="input-star" data-start-count="${movie.id} placeholder="별점 개수를 입력해주세요 예) 5">
 				</div>
 
 
 				<div class="mupstar_btn_wrap">
 					<div class="mupstar_btn">
 						<button type="button" class="list-btn">목록</button>
-						<button type="button" class="upload-btn">업로드</button>
+						<button type="button" class="upload-btn" data-movie-id="${movie.id}">업로드</button>
 					</div>
 				</div>
 
 			</div>
 
 		</div>
-	</div>
 
 	<script>
 		$(document).ready(function() {
@@ -132,30 +77,50 @@
 				//alert("목록");
 				location.href = "/star/movie_list_view";
 			});
-
-			// 별/해제
-			$('.like-btn').on('click', function(e) {
-				e.preventDefault();
-				//alert("aa");
-
-				let postId = $(this).data('post-id');
-				//alert(postId);
-
+			
+			// 별 업로드
+			$('.upload-btn').on('click', function() {
+				let star = $('.input-star').val().trim();
+				let movieId = $(this).data('movieId');
+				let starCount = $(this).data('startCount');
+				
+				//validation check
+				if (!star) {
+					alert("별점을 매겨주세요.");
+					return;
+				}
+				
+				if (star < 1) {
+					alert("별점은 최소 1점부터 매길 수 있습니다.");
+					return;
+				}
+				
+				if (star > 5) {
+					alert("별점은 최대 5점까지 매길 수 있습니다.");
+					return;
+				}
+				alert(movieId);
+				alert(starCount);
+				
 				$.ajax({
-					url : "/star/" + postId //     /like/3
-					,
-					success : function(data) {
+					//request
+					type:"post"
+					, url: "/star/create"
+					, data: {"movieId": movieId, "startCount": starCount}
+				
+					// reponse
+					, success:function(data) {
 						if (data.code == 1) {
-							location.reload();
-						} else if (data.code == 300) {
-							// 비로그인 시 로그인 페이지로 이동
+							alert("별점 평가 완료!");
+							location.href = "/star/movie_star_result_view"
+						} else {
 							alert(data.errorMessage);
-							location.href = "/user/sign_in_view";
 						}
-					},
-					error : function(request, status, error) {
-						alert("좋아요를 하는데 실패했습니다.");
 					}
+					,error:function(request, status, error) {
+						alert("별점 평가 실패");
+					}
+					
 				});
 			});
 

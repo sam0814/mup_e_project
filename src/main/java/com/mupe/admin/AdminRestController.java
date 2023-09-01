@@ -44,17 +44,34 @@ public class AdminRestController {
 		return result;
 	}
 	
+	/**
+	 * 영화 삭제 API
+	 * @param id
+	 * @return
+	 */
+	@PutMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("id") int id) {
 	
-//	@PutMapping("/update")
-//	public Map<String, Object> update(
-//			@RequestParam("postId") int postId,
-//			@RequestParam("subject") String subject,
-//			@RequestParam("file") MultipartFile file,
-//			@RequestParam("screen") boolean screen) {
+	
+	// BO 업데이트
+	movieBO.deletePost(id);
+	
+	// 응답
+	Map<String, Object> result = new HashMap<>();
+	result.put("code", 1);
+	result.put("result", "성공");
+	return result;
+	
+	}
+	
+//	@PutMapping("/insert")
+//	public Map<String, Object> insert(
+//			@RequestParam("id") int id) {
 //	
 //	
 //	// BO 업데이트
-//	movieBO.updatePost(postId, subject, file, screen);
+//	movieBO.insertPost(id);
 //	
 //	// 응답
 //	Map<String, Object> result = new HashMap<>();

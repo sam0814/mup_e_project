@@ -84,3 +84,19 @@
 	opacity: 1 !important;
 	margin: 0;
 }
+
+.input-star {
+	width: 300px;
+	height: 40px;
+	border-radius: 4px;
+	border: 2px solid #dbdbdb;
+}
+
+#starBtn {
+	width: 80px;
+	height: 40px;
+	border-radius: 4px;
+	border: none;
+	background-color: #3498db;
+	color: #fff;
+}

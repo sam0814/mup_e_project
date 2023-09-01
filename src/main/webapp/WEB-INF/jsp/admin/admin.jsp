@@ -60,26 +60,10 @@
 							<c:forEach items="${movieList}" var="movie">
 								<div class="movie-wrap">
 									<span>${movie.subject}</span>
-									<button type="button" id="deleteBtn"
-										data-id-movie="${movie.id}">숨기기</button>
+									<button type="button" class="deleteBtn" data-id="${movie.id}">숨기기</button>
+									<button type="button" class="insertBtn" data-id="${movie.id}">나타내기</button>
 								</div>
 							</c:forEach>
-
-
-							<!-- <div class="movie-wrap">
-								<span>비공식 작전_2023</span>
-								<button type="button" id="deleteBtn">삭제</button>
-							</div>
-
-							<div class="movie-wrap">
-								<span>엘리멘탈_2023</span>
-								<button type="button" id="deleteBtn">삭제</button>
-							</div>
-
-							<div class="movie-wrap">
-								<span>밀수_2023</span>
-								<button type="button" id="deleteBtn">삭제</button>
-							</div> -->
 						</div>
 					</div>
 
@@ -93,7 +77,7 @@
 
 						<input type="text" class="input-title" id="subject"
 							placeholder="영화 제목을 입력해주세요."> <br>
-						<textarea name="input-text" id="input-text" cols="40" rows="20"></textarea>
+						<textarea name="input-text" id="input-text" cols="38" rows="5"></textarea>
 						<br>
 						<div class="file-btn-wrap">
 							<input type="file" id="file" accept=".jpg, .jpeg, .png, .gif"
@@ -146,71 +130,123 @@
 				$('#fileName').text(fileName);
 			});
 
-					// 글 저장 
-					$('#uploadBtn').on('click',function() {
-						let subject = $('#subject').val()/* .trim() */;
-						let file = $('#file').val();
+			// 글 저장 
+			$('#uploadBtn').on('click',function() {
+				//alert("aa");
+				let subject = $('#subject').val()/* .trim() */;
+				let file = $('#file').val();
 
-					// validation check
-						if (!subject) {
-							alert("제목을 입력해주세요");
+			// validation check
+				if (!subject) {
+					alert("제목을 입력해주세요");
+					return;
+				}
+
+				if (!file) {alert("파일을 넣어주셔야합니다!");
+					return;
+				}
+
+				// 파일이 업로드 된 경우에만 확장자 체크
+					if (file != "") {
+					// 확장자만 뽑은 후 소문자로 변경
+					let ext = file.split(".").pop().toLowerCase();
+					//alert(ext);
+
+					if ($.inArray(ext, [ 'jpg','jpeg', 'png','gif' ]) == -1) {
+						alert("이미지 파일만 업로드 할 수 있습니다.");
+						$('#file').val(''); // 파일을 비운다.
 							return;
-						}
+					}
+				}
 
-						if (!file) {alert("파일을 넣어주셔야합니다!");
-							return;
-						}
+				// AJAX 통신
+				// 이미지를 업로드 할 때는 반드시 form 태그가 있어야함
+					let formData = new FormData();
+						formData.append("subject",subject);
+						formData.append("file",
+						$('#file')[0].files[0]);
 
-						// 파일이 업로드 된 경우에만 확장자 체크
-							if (file != "") {
-							// 확장자만 뽑은 후 소문자로 변경
-							let ext = file.split(".").pop().toLowerCase();
-							//alert(ext);
+				$.ajax({
+						// request
+						type : "post"
+						,url : "/admin/create"
+						,data : formData
+						,enctype : "multipart/form-data" //파일 업로드를 위한 필수 설정
+						,processData : false //파일 업로드를 위한 필수 설정
+						,contentType : false //파일 업로드를 위한 필수 설정
 
-							if ($.inArray(ext, [ 'jpg','jpeg', 'png','gif' ]) == -1) {
-								alert("이미지 파일만 업로드 할 수 있습니다.");
-								$('#file').val(''); // 파일을 비운다.
-									return;
+						// response
+						,success : function(data) {
+							if (data.code == 1) {
+								// 성공
+								alert("글이 저장되었습니다.");
+								location.href = "/star/movie_list_view"
+							} else {
+									alert(data.errorMessage);
 							}
 						}
-
-						// AJAX 통신
-						// 이미지를 업로드 할 때는 반드시 form 태그가 있어야함
-							let formData = new FormData();
-								formData.append("subject",subject);
-								formData.append("file",
-								$('#file')[0].files[0]);
-
+							,error : function(request,stataus,error) {
+								alert("글을 저장하는데 실패했습니다.");
+							}
+						});
+					});
+							
+					
+					// 수정(영화삭제)
+					$('.deleteBtn').on('click', function() {
+						let id = $(this).data('id');
+						//let screen = $('#updateText').val().trim();
+							
+						//ajax
 						$.ajax({
-								// request
-								type : "post"
-								,url : "/admin/create"
-								,data : formData
-								,enctype : "multipart/form-data" //파일 업로드를 위한 필수 설정
-								,processData : false //파일 업로드를 위한 필수 설정
-								,contentType : false //파일 업로드를 위한 필수 설정
-
-								// response
-								,success : function(data) {
-									if (data.code == 1) {
-										// 성공
-										alert("글이 저장되었습니다.");
-										location.href = "/star/movie_list_view"
-									} else {
-											alert(data.errorMessage);
-									}
+							//request
+							type:"put"
+							, url:"/admin/delete"
+							, data:{"id": id}
+									
+							// response
+							, success:function(data) {
+								if (data.code == 1) {
+									alert("영화가 수정되었습니다");
+									location.href = "/star/movie_list_view"
+								} else {
+									alert(data.errorMessage);
 								}
-									,error : function(request,stataus,error) {
-										alert("글을 저장하는데 실패했습니다.");
-									}
-								});
-							});
+							}
+						, error:function(request, status, error) {
+							alert("영화 수정 실패했습니다.");
+							}
+								
+						});
+					});
+					
+					// 수정(영화 나타내기)
+					 $('.insertBtn').on('click', function() {
+						let id = $(this).data('id');
+						//let screen = $('#updateText').val().trim();
 							
-							// 글 수정
-							$('#deleteBtn').on('click',function() {
-								alert("숨기기");
-							
-							});
-		});
+						//ajax
+						$.ajax({
+							//request
+							type:"put"
+							, url:"/admin/insert"
+							, data:{"id": id}
+									
+							// response
+							, success:function(data) {
+								if (data.code == 1) {
+									alert("영화가 수정되었습니다");
+									location.href = "/star/movie_list_view"
+								} else {
+									alert(data.errorMessage);
+								}
+							}
+						, error:function(request, status, error) {
+							alert("영화 수정 실패했습니다.");
+							}
+								
+						});
+					});
+				});
 							
 	</script>

@@ -8,6 +8,7 @@
  			*
  		FROM
  			`mupick_post`
+ 			ORDER BY `id` DESC
  	</select>
  	
  	
@@ -50,7 +51,7 @@
  		)
  	</insert>
  	
- 	<select id="selectPostByPostIdAndUserId" parameterType="map" resultType="com.mupe.mupick.domain.Mupick">
+  	<select id="selectPostByPostIdAndUserId" parameterType="map" resultType="com.mupe.mupick.domain.Mupick">
 		SELECT
 			`id`
 			,`userId`
@@ -64,6 +65,21 @@
 		WHERE
 			`userId` = #{userId}
 			AND `id` = #{postId}
+	</select>
+	
+ 	<select id="selectPostByPostId" parameterType="map" resultType="com.mupe.mupick.domain.Mupick">
+		SELECT
+			`id`
+			,`userId`
+			,`subject`
+			,`content`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`mupick_post`
+		WHERE
+			 `id` = #{postId}
 	</select>
 	
 	

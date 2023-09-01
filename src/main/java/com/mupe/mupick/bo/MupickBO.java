@@ -50,6 +50,10 @@ public class MupickBO {
 		return mupickMapper.selectPostByPostIdAndUserId(postId, userId);
 	}
 	
+	public Mupick getPostByPostId(int postId) {
+		return mupickMapper.selectPostByPostId(postId);
+	}
+	
 	public void updatePost(int userId, String userLoginId,
 			int postId, String subject, String content, MultipartFile file) {
 		

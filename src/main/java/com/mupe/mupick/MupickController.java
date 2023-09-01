@@ -53,7 +53,7 @@ public class MupickController {
 		int userId = (int)session.getAttribute("userId");
 		
 		// post select by postId, userId
-		Mupick post = mupickBO.getPostByPostIdAndUserId(postId, userId);
+		Mupick post = mupickBO.getPostByPostId(postId);
 		model.addAttribute("mupick", post);
 		model.addAttribute("view", "mupick/mupick_board_detail");
 		return "mupick/mupick_board_detail";

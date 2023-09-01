@@ -33,7 +33,7 @@
 
             <div class="result-title-wrap">
                 <div class="my-star">
-                    <p class="my-name">송새미님의</p>
+                    <p class="my-name">${userName}님의</p>
                     <p class="mupstar">MupStar</p>
                 </div>
                 <div class="user-star">
@@ -44,31 +44,17 @@
             <div class="result-main-wrap">
                 <div class="my-star-result">
                     <div class="poster-wrap">
-                        <img src="/static/images/the_moon_movie.jpg" alt="영화 더 문" width="300px" height="445px">
+                        <img src="${movie.id.imagePath}" alt="" width="300px" height="445px">
                     </div>
         
                     <div class="movie_title-wrap">
                         <div class="movie-title">
-                            <span>더 문_2023</span>
+                            <span>${movie.id.subject}</span>
                         </div>
                     </div>
         
                     <div class="movie_star-wrap">
-                        <div class="movie-star">
-                            <img src="/static/images/icons8-star.png" alt="">
-                        </div>
-                        <div class="movie-star">
-                            <img src="/static/images/icons8-star.png" alt="">
-                        </div>
-                        <div class="movie-star">
-                            <img src="/static/images/icons8-star.png" alt="">
-                        </div>
-                        <div class="movie-star">
-                            <img src="/static/images/icons8-star.png" alt="">
-                        </div>
-                        <div class="movie-star">
-                            <img src="/static/images/icons8-star.png" alt="">
-                        </div>
+                        
                     </div>
         
                 </div>

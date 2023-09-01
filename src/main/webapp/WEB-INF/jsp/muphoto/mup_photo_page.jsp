@@ -67,7 +67,9 @@
                 <div class="mup-photo-wrap">
                     <div class="mup-photo-nav">
                         <p>${card.user.loginId}</p>
+                        <c:if test="${userId eq card.post.userId}">
                         <a><img alt="" src="/static/images/cancel.png" class="cancelBtn" data-post-id="${card.post.id}"></a>
+                        </c:if>
                     </div>
 
                     <div class="mup-photo-input">

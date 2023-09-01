@@ -25,6 +25,8 @@ public interface MupickMapper {
 			@Param("postId") int postId, 
 			@Param("userId") int userId);
 	
+	public Mupick selectPostByPostId(int postId);
+	
 	public void updatePostByIdAndUserId(
 			@Param("postId") int postId,
 			@Param("userId") int userId,

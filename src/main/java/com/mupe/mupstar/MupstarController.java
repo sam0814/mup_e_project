@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,6 +25,7 @@ public class MupstarController {
 	
 	@Autowired
 	private StarBO starBO;
+	
 
 	@GetMapping("/movie_list_view")
 	public String movieListView(Model model, HttpSession session) {
@@ -48,15 +48,14 @@ public class MupstarController {
 	
 	@GetMapping("/movie_star_view")
 	public String movieStarView(Model model,
-			@RequestParam(value="id",required=false) Integer id) {
+			@RequestParam(value="id",required=false) Integer id,
+			@RequestParam(value="movieId",required=false) Integer movieId) {
 		
 		// DB 글 목록 조회
-		//StarView starView = starBO.StarToggle(0, 0);
 		Movie movie = movieBO.getPostById(id);
 		
-		//model.addAttribute("starView", starView);
 		model.addAttribute("movie", movie);
-		model.addAttribute("view", "mupstar/mupstar_board_detail");
+		model.addAttribute("star", "mupstar/mupstar_board_detail");
 				
 		
 		return "mupstar/mupstar_board_detail";
