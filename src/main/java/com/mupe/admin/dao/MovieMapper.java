@@ -24,6 +24,6 @@ public interface MovieMapper {
 	
 	public void deletePost(int id);
 	
-	//public void insertPost(int id);
+	public void insertPostt(int id);
 	
 }

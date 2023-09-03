@@ -63,6 +63,12 @@
     width: 600px !important;
 }
 
+.starCount {
+	font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
 .user-star-result-box {
     width: 560px;
 }
@@ -70,7 +76,8 @@
 .user-star-result-1 {
     padding-left: 40px;
     width: 560px;
-    height: 100px;
+    height: 75px;
+    text-align:center; 
     border-bottom: 2px solid #dbdbdb;
 }
 

@@ -47,7 +47,7 @@
 				</div>
 				</c:if>
                 <div class="right-box">
-                    <textarea name="input-text" id="content" cols="80" rows="22">${mupick.content}</textarea>
+                    <textarea name="input-text" id="content" cols="45" rows="22">${mupick.content}</textarea>
                 </div>
             </div>
 

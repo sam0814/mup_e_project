@@ -53,9 +53,9 @@ public class MovieBO {
 	}
 	
 		//영화 나타내기
-//		public void insertPost(int id) {
-//
-//			// 영화 업데이트
-//			movieMapper.insertPost(id);
-//		}
+		public void insertPost(int id) {
+
+			// 영화 업데이트
+			movieMapper.insertPostt(id);
+		}
 }

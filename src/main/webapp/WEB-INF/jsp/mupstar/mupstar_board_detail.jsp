@@ -54,7 +54,7 @@
 					</div>
 
 				<div class="movie_star-wrap">
-						<input type="text" class="input-star" data-start-count="${movie.id} placeholder="별점 개수를 입력해주세요 예) 5">
+						<input type="text" class="input-star" placeholder="별점 개수를 입력해주세요 예) 5">
 				</div>
 
 
@@ -82,7 +82,7 @@
 			$('.upload-btn').on('click', function() {
 				let star = $('.input-star').val().trim();
 				let movieId = $(this).data('movieId');
-				let starCount = $(this).data('startCount');
+				//let starCount = $('startCount');
 				
 				//validation check
 				if (!star) {
@@ -99,20 +99,20 @@
 					alert("별점은 최대 5점까지 매길 수 있습니다.");
 					return;
 				}
-				alert(movieId);
-				alert(starCount);
+				//alert(movieId);
+				//alert(star);
 				
 				$.ajax({
 					//request
 					type:"post"
 					, url: "/star/create"
-					, data: {"movieId": movieId, "startCount": starCount}
+					, data: {"movieId": movieId, "startCount": star}
 				
 					// reponse
 					, success:function(data) {
 						if (data.code == 1) {
 							alert("별점 평가 완료!");
-							location.href = "/star/movie_star_result_view"
+							location.href = "/star/movie_star_result_view?movieId=" + movieId;
 						} else {
 							alert(data.errorMessage);
 						}

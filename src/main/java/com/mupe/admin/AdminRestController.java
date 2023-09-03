@@ -65,19 +65,19 @@ public class AdminRestController {
 	
 	}
 	
-//	@PutMapping("/insert")
-//	public Map<String, Object> insert(
-//			@RequestParam("id") int id) {
-//	
-//	
-//	// BO 업데이트
-//	movieBO.insertPost(id);
-//	
-//	// 응답
-//	Map<String, Object> result = new HashMap<>();
-//	result.put("code", 1);
-//	result.put("result", "성공");
-//	return result;
-//	
-//	}
+	@PutMapping("/insert")
+	public Map<String, Object> insert(
+			@RequestParam("id") int id) {
+	
+	
+	// BO 업데이트
+	movieBO.insertPost(id);
+	
+	// 응답
+	Map<String, Object> result = new HashMap<>();
+	result.put("code", 1);
+	result.put("result", "성공");
+	return result;
+	
+	}
 }

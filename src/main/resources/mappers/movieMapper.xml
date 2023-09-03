@@ -71,13 +71,13 @@
 			`id` = #{id}
 	</update>
 	
-<!-- 	 <update id="insertPost" parameterType="int">
+ 	 <update id="insertPostt" parameterType="int">
 		UPDATE `movie`
 		SET
 				`screen` = 0
 			, `updatedAt` = NOW()
 		WHERE
 			`id` = #{id}
-	</update> -->
+	</update>
  	
  </mapper>

@@ -62,7 +62,23 @@ public class MupstarController {
 	}
 	
 	@GetMapping("/movie_star_result_view")
-	public String movieStarResultView() {
+	public String movieStarResultView(Model model,
+			HttpSession session,
+			@RequestParam("movieId") String movieId) {
+		
+		int id = (int) session.getAttribute("userId");
+		
+		// DB 글 목록 조회
+		 int mup = Integer.parseInt(movieId);
+		 List<MupStar> starList = starBO.getStarListByMovieId(mup);
+		 
+		Movie movie = movieBO.getPostById(mup);
+		int star = starBO.getStar(mup, id);
+				
+		model.addAttribute("starList", starList);
+		model.addAttribute("movie", movie);
+		model.addAttribute("star", star);
+		
 		return "mupstar/mupstar_board_detail_result";
 	}
 }

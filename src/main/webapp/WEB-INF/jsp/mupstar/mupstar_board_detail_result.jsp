@@ -33,79 +33,45 @@
 
             <div class="result-title-wrap">
                 <div class="my-star">
-                    <p class="my-name">${userName}님의</p>
+                    <p class="my-name">${movie.subject}</p>
                     <p class="mupstar">MupStar</p>
                 </div>
                 <div class="user-star">
-                    <p class="user-name">다른 MupE의</p>
                     <p class="mupstar">MupStar</p>
+                    <p class="user-name">목록</p>
                 </div>
             </div>
             <div class="result-main-wrap">
                 <div class="my-star-result">
                     <div class="poster-wrap">
-                        <img src="${movie.id.imagePath}" alt="" width="300px" height="445px">
+                        <img src="${movie.imagePath}" alt="" width="300px" height="445px">
                     </div>
         
                     <div class="movie_title-wrap">
                         <div class="movie-title">
-                            <span>${movie.id.subject}</span>
+                            <span>${movie.subject}</span>
                         </div>
                     </div>
         
                     <div class="movie_star-wrap">
-                        
+                        <%-- <span class="starCount">${star}점</span> --%>
                     </div>
         
                 </div>
 
                 <!-- user 별점-->
                 <div class="user-star-result-box">
+                	
+                   
+                	<c:forEach items="${starList}" var="star">
                     <div class="user-star-result-1">
-                        <b class="user-name">무비평론가A님의</b>
-                        <b class="mupstar">MupStar</b>
-
-                        <div class="user-movie_star-wrap">
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                        </div>
+                        <b class="user-name">${star.userId}의</b>
+                        <b class="mupstar">MupStar</b><br>
+                         <span class="starCount">${star.startCount}점</span>
                     </div>
-
-                    <div class="user-star-result-2">
-                        <b class="user-name">한국영화좋아님의</b>
-                        <b class="mupstar">MupStar</b>
-
-                        <div class="user-movie_star-wrap">
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                            <div class="movie-star">
-                                <img src="/static/images/icons8-star.png" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+                  
+                   
 
                     <div class="mupstar_btn_wrap">
                         <div class="mupstar_btn">
@@ -116,3 +82,14 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+
+	// 목록 버튼 클릭 => mupstar_board 페이지로 이동
+	$('.list-btn').on('click', function() {
+		//alert("목록");
+		location.href = "/star/movie_list_view";
+	});
+});
+</script>
