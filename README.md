@@ -19,6 +19,7 @@
 <img src="https://img.shields.io/badge/mysql-%234479A1.svg?&style=for-the-badge&logo=mysql&logoColor=white" />
 <img src="https://img.shields.io/badge/bootstrap-%237952B3.svg?&style=for-the-badge&logo=bootstrap&logoColor=white" />
 <img src="https://img.shields.io/badge/json-%23000000.svg?&style=for-the-badge&logo=json&logoColor=white" />
+<img src="https://img.shields.io/badge/MyBatis-6f4c5b?style=flat-square&logo=Java&logoColor=white" height=28>
 
 <br>
 
