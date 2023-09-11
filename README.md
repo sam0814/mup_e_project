@@ -27,5 +27,11 @@
 
 ![mupick](https://github.com/sam0814/mup_e_project/assets/100101088/41c93ec1-cdac-4dea-81c7-77e5146212b6)
 
+### MupStar⭐
+
+<br>
+
+![MupStar](https://github.com/sam0814/mup_e_project/assets/100101088/ff98288a-69ac-4471-8838-c0c0bdbcf6df)
+
 
 
