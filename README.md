@@ -8,5 +8,11 @@
 
 ## DB /URL 설계⛏
 
+![DB](https://github.com/sam0814/mup_e_project/assets/100101088/0983b148-6597-4d8a-a6f5-189f4da34596)
+
+<br>
+
+![URL설계 PNG](https://github.com/sam0814/mup_e_project/assets/100101088/4aba3ecd-60ea-4529-8d06-db9ee85716bc)
+
 
 
