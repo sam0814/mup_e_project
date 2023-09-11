@@ -14,5 +14,7 @@
 
 ![URL설계 PNG](https://github.com/sam0814/mup_e_project/assets/100101088/4aba3ecd-60ea-4529-8d06-db9ee85716bc)
 
+### [DB/URL 설계 링크](https://docs.google.com/spreadsheets/d/1Rr4sLkQ-vwmej9jg9o0a0RR1LafXtOKa_nuCFyVYo9Q/edit?usp=sharing)
+: DB/URL 설계링크
 
 
