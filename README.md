@@ -25,27 +25,27 @@
 
 <br>
 
-![mupick](https://github.com/sam0814/mup_e_project/assets/100101088/41c93ec1-cdac-4dea-81c7-77e5146212b6)
+![mupick](https://github.com/sam0814/mup_e_project/assets/100101088/6b3ac864-d209-4283-b26b-8a4d6510810e)
 
 ### MupStar⭐
 
 <br>
 
-![MupStar](https://github.com/sam0814/mup_e_project/assets/100101088/ff98288a-69ac-4471-8838-c0c0bdbcf6df)
+![MupStar](https://github.com/sam0814/mup_e_project/assets/100101088/1bdaeba2-8451-4d52-9278-17e5e02dc28f)
 
 
 ### Muphoto📸
 
 <br>
 
-![Muphoto](https://github.com/sam0814/mup_e_project/assets/100101088/869da088-0cab-46b7-a95a-05d9f2c5299b)
+![Muphoto](https://github.com/sam0814/mup_e_project/assets/100101088/45b9e9d4-4122-49a9-ab6e-8b39e7fe357b)
 
 
 ### admin🔐
 
 <br>
 
-![admin](https://github.com/sam0814/mup_e_project/assets/100101088/f8532daa-d1bf-4121-bcdf-36b3d505f312)
+![admin](https://github.com/sam0814/mup_e_project/assets/100101088/052c9c89-8f45-468d-9d2f-c7a0c1cc31bc)
 
 <br>
 
